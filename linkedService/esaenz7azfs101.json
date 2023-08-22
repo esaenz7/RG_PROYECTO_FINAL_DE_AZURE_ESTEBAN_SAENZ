@@ -1,0 +1,24 @@
+{
+	"name": "esaenz7azfs101",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "Linked service to file system.",
+		"parameters": {
+			"path": {
+				"type": "string",
+				"defaultValue": "G:\\My Drive\\ACADÉMICO\\Datapath\\Azure\\Proyecto Final\\source"
+			}
+		},
+		"annotations": [],
+		"type": "FileServer",
+		"typeProperties": {
+			"host": "G:\\My Drive\\ACADÉMICO\\Datapath\\Azure\\Proyecto Final\\source",
+			"userId": "esaen",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIzM2IwZGMwYS1jZGE2LTQ5Y2YtYmU2My00ZTMwNTMwY2ZkNTYiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "esaenz7azir101",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

@@ -8,12 +8,21 @@
 				"path": "G:\\My Drive\\ACADÉMICO\\Datapath\\Azure\\Proyecto Final\\source"
 			}
 		},
+		"parameters": {
+			"filename": {
+				"type": "string",
+				"defaultValue": "*.csv"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "FileServerLocation",
-				"fileName": "2018.csv"
+				"fileName": {
+					"value": "@dataset().filename",
+					"type": "Expression"
+				}
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",

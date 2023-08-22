@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "esaenz7azdf101"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"esaenz7azfs101_password": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://esaenz7azsa101.dfs.core.windows.net/"
+		},
+		"esaenz7azfs101_properties_typeProperties_host": {
+			"value": "@{linkedService().path}"
+		},
+		"esaenz7azfs101_properties_typeProperties_userId": {
+			"value": "esaen"
+		},
+		"esaenz7azkv101_properties_typeProperties_baseUrl": {
+			"value": "https://esenz7azkv101.vault.azure.net/"
+		}
+	}
+}

@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "esaenz7azplac101",
+				"name": "esaenz7azcd101",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -15,8 +15,59 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"enableStaging": false
-				}
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "FileServerReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "esaenz7azds101",
+						"type": "DatasetReference",
+						"parameters": {
+							"filename": "2018.csv",
+							"path": "source"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "esaenz7azdl101",
+						"type": "DatasetReference",
+						"parameters": {
+							"filesystem": "esaenzazdl101",
+							"path": "bronze",
+							"filename": "data1.csv"
+						}
+					}
+				]
 			}
 		],
 		"annotations": []

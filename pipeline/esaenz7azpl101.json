@@ -893,7 +893,10 @@
 						"parameters": {
 							"filesystem": "esaenzazdl101",
 							"path": "bronze",
-							"filename": "*.csv"
+							"filename": {
+								"value": "@activity('esaenz7azcd101').output",
+								"type": "Expression"
+							}
 						}
 					},
 					"fieldList": [

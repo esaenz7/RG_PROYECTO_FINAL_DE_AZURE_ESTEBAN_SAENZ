@@ -1,0 +1,10 @@
+{
+	"name": "esaenz7azkv101",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://esenz7azkv101.vault.azure.net/"
+		}
+	}
+}

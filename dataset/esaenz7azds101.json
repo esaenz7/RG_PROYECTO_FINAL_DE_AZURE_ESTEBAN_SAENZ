@@ -12,6 +12,10 @@
 			"filename": {
 				"type": "string",
 				"defaultValue": "*.csv"
+			},
+			"path": {
+				"type": "String",
+				"defaultValue": "/source"
 			}
 		},
 		"annotations": [],
@@ -21,6 +25,10 @@
 				"type": "FileServerLocation",
 				"fileName": {
 					"value": "@dataset().filename",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().path",
 					"type": "Expression"
 				}
 			},

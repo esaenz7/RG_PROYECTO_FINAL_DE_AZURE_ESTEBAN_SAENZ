@@ -1,0 +1,7 @@
+{
+	"name": "esaenz7azir101",
+	"properties": {
+		"type": "SelfHosted",
+		"description": "Integration runtime self hosted."
+	}
+}

@@ -37,6 +37,59 @@
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
-		"schema": []
+		"schema": [
+			{
+				"name": "EventId",
+				"type": "String"
+			},
+			{
+				"name": "Type",
+				"type": "String"
+			},
+			{
+				"name": "Severity",
+				"type": "String"
+			},
+			{
+				"name": "StartTime(UTC)",
+				"type": "String"
+			},
+			{
+				"name": "EndTime(UTC)",
+				"type": "String"
+			},
+			{
+				"name": "TimeZone",
+				"type": "String"
+			},
+			{
+				"name": "AirportCode",
+				"type": "String"
+			},
+			{
+				"name": "LocationLat",
+				"type": "String"
+			},
+			{
+				"name": "LocationLng",
+				"type": "String"
+			},
+			{
+				"name": "City",
+				"type": "String"
+			},
+			{
+				"name": "County",
+				"type": "String"
+			},
+			{
+				"name": "State",
+				"type": "String"
+			},
+			{
+				"name": "ZipCode",
+				"type": "String"
+			}
+		]
 	}
 }

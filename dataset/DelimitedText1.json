@@ -13,6 +13,10 @@
 			"path": {
 				"type": "string",
 				"defaultValue": "bronze"
+			},
+			"filename": {
+				"type": "string",
+				"defaultValue": "*.csv"
 			}
 		},
 		"annotations": [],

@@ -937,6 +937,10 @@
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
+					"on": {
+						"value": "@activity('esaenz7azgm101').output",
+						"type": "Expression"
+					},
 					"cases": []
 				}
 			}

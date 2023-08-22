@@ -915,9 +915,16 @@
 				}
 			},
 			{
-				"name": "Lookup1",
+				"name": "esaenz7azlu101",
 				"type": "Lookup",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "esaenz7azgm101",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -925,7 +932,29 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"dataset": {
+						"referenceName": "esaenz7azdl101",
+						"type": "DatasetReference",
+						"parameters": {
+							"filesystem": "esaenzazdl101",
+							"path": "bronze",
+							"filename": "metadata101.csv"
+						}
+					}
+				}
 			}
 		],
 		"annotations": []

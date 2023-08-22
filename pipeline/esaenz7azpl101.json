@@ -952,7 +952,7 @@
 						"parameters": {
 							"filesystem": "esaenzazdl101",
 							"path": "bronze",
-							"filename": "metadata101.csv"
+							"filename": "*.csv"
 						}
 					}
 				}

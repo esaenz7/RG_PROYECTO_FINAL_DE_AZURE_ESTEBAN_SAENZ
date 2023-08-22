@@ -6,7 +6,7 @@
 		"parameters": {
 			"path": {
 				"type": "string",
-				"defaultValue": "G:\\My Drive\\ACADÉMICO\\Datapath\\Azure\\Proyecto Final\\source"
+				"defaultValue": "G:\\My Drive\\ACADÉMICO\\Datapath\\Azure\\Proyecto Final"
 			}
 		},
 		"annotations": [],
@@ -14,7 +14,7 @@
 		"typeProperties": {
 			"host": "@{linkedService().path}",
 			"userId": "esaen",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIyMTRlYzU4MS02MDYzLTQ1ZTAtYjQ4Ni0wMjk3Y2UyMmYwYmYiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIzMzg5NzhjOS04YzRjLTQ4ODYtYTU0OC1kZmZhOGUwMTNiYmYiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "esaenz7azir101",

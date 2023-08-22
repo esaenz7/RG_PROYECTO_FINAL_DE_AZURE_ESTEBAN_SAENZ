@@ -896,7 +896,15 @@
 							"filename": "metadata101.csv"
 						}
 					},
-					"fieldList": [],
+					"fieldList": [
+						"itemName",
+						"itemType",
+						"exists",
+						"lastModified",
+						"columnCount",
+						"size",
+						"contentMD5"
+					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
 						"enablePartitionDiscovery": false

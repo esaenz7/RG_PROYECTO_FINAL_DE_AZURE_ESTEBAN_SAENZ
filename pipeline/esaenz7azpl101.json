@@ -930,6 +930,15 @@
 				"typeProperties": {
 					"enableStaging": false
 				}
+			},
+			{
+				"name": "Switch1",
+				"type": "Switch",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"cases": []
+				}
 			}
 		],
 		"annotations": []

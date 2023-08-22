@@ -916,16 +916,9 @@
 				}
 			},
 			{
-				"name": "esaenz7azlu101",
-				"type": "Lookup",
-				"dependsOn": [
-					{
-						"activity": "esaenz7azgm101",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"name": "esaenz7azcd201",
+				"type": "Copy",
+				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -935,26 +928,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"source": {
-						"type": "DelimitedTextSource",
-						"storeSettings": {
-							"type": "AzureBlobFSReadSettings",
-							"recursive": true,
-							"enablePartitionDiscovery": false
-						},
-						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
-						}
-					},
-					"dataset": {
-						"referenceName": "esaenz7azdl101",
-						"type": "DatasetReference",
-						"parameters": {
-							"filesystem": "esaenzazdl101",
-							"path": "bronze",
-							"filename": "*.csv"
-						}
-					}
+					"enableStaging": false
 				}
 			}
 		],

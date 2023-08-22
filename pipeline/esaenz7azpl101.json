@@ -854,6 +854,57 @@
 						}
 					}
 				]
+			},
+			{
+				"name": "Get Metadata1",
+				"type": "GetMetadata",
+				"dependsOn": [
+					{
+						"activity": "esaenz7azcd101",
+						"dependencyConditions": [
+							"Completed"
+						]
+					},
+					{
+						"activity": "esaenz7azcd102",
+						"dependencyConditions": [
+							"Completed"
+						]
+					},
+					{
+						"activity": "esaenz7azcd103",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "esaenz7azdl101",
+						"type": "DatasetReference",
+						"parameters": {
+							"filesystem": "esaenzazdl101",
+							"path": "bronze",
+							"filename": "*.csv"
+						}
+					},
+					"fieldList": [],
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
 			}
 		],
 		"annotations": []

@@ -5,7 +5,7 @@
 			"referenceName": "esaenz7azfs101",
 			"type": "LinkedServiceReference",
 			"parameters": {
-				"path": "G:\\My Drive\\ACADÉMICO\\Datapath\\Azure\\Proyecto Final\\source"
+				"path": "G:\\My Drive\\ACADÉMICO\\Datapath\\Azure\\Proyecto Final"
 			}
 		},
 		"parameters": {

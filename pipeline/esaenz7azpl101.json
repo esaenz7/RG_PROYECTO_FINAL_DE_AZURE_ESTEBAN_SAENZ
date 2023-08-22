@@ -934,13 +934,16 @@
 			{
 				"name": "Switch1",
 				"type": "Switch",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "esaenz7azgm101",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"userProperties": [],
 				"typeProperties": {
-					"on": {
-						"value": "@activity('esaenz7azgm101').output",
-						"type": "Expression"
-					},
 					"cases": []
 				}
 			}

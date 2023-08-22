@@ -892,11 +892,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"filesystem": "esaenzazdl101",
-							"path": "bronze",
-							"filename": {
-								"value": "@activity('esaenz7azcd101').output",
-								"type": "Expression"
-							}
+							"path": "bronze"
 						}
 					},
 					"fieldList": [

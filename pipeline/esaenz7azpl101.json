@@ -921,7 +921,8 @@
 					{
 						"activity": "esaenz7azgm101",
 						"dependencyConditions": [
-							"Completed"
+							"Completed",
+							"Succeeded"
 						]
 					}
 				],

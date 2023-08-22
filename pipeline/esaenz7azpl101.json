@@ -893,19 +893,12 @@
 						"parameters": {
 							"filesystem": "esaenzazdl101",
 							"path": "bronze",
-							"filename": "*.csv"
+							"filename": "metadata101.csv"
 						}
 					},
-					"fieldList": [
-						"itemName",
-						"itemType",
-						"exists",
-						"lastModified",
-						"size"
-					],
+					"fieldList": [],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
-						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {

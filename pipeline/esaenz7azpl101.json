@@ -898,8 +898,10 @@
 					},
 					"fieldList": [
 						"itemName",
+						"itemType",
 						"exists",
-						"columnCount"
+						"lastModified",
+						"size"
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",

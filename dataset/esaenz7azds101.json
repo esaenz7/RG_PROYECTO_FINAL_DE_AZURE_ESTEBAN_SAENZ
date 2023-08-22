@@ -1,0 +1,138 @@
+{
+	"name": "esaenz7azds101",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "esaenz7azfs101",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"path": "G:\\My Drive\\ACADÉMICO\\Datapath\\Azure\\Proyecto Final\\source"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "FileServerLocation",
+				"fileName": "2018.csv"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "FL_DATE",
+				"type": "String"
+			},
+			{
+				"name": "OP_CARRIER",
+				"type": "String"
+			},
+			{
+				"name": "OP_CARRIER_FL_NUM",
+				"type": "String"
+			},
+			{
+				"name": "ORIGIN",
+				"type": "String"
+			},
+			{
+				"name": "DEST",
+				"type": "String"
+			},
+			{
+				"name": "CRS_DEP_TIME",
+				"type": "String"
+			},
+			{
+				"name": "DEP_TIME",
+				"type": "String"
+			},
+			{
+				"name": "DEP_DELAY",
+				"type": "String"
+			},
+			{
+				"name": "TAXI_OUT",
+				"type": "String"
+			},
+			{
+				"name": "WHEELS_OFF",
+				"type": "String"
+			},
+			{
+				"name": "WHEELS_ON",
+				"type": "String"
+			},
+			{
+				"name": "TAXI_IN",
+				"type": "String"
+			},
+			{
+				"name": "CRS_ARR_TIME",
+				"type": "String"
+			},
+			{
+				"name": "ARR_TIME",
+				"type": "String"
+			},
+			{
+				"name": "ARR_DELAY",
+				"type": "String"
+			},
+			{
+				"name": "CANCELLED",
+				"type": "String"
+			},
+			{
+				"name": "CANCELLATION_CODE",
+				"type": "String"
+			},
+			{
+				"name": "DIVERTED",
+				"type": "String"
+			},
+			{
+				"name": "CRS_ELAPSED_TIME",
+				"type": "String"
+			},
+			{
+				"name": "ACTUAL_ELAPSED_TIME",
+				"type": "String"
+			},
+			{
+				"name": "AIR_TIME",
+				"type": "String"
+			},
+			{
+				"name": "DISTANCE",
+				"type": "String"
+			},
+			{
+				"name": "CARRIER_DELAY",
+				"type": "String"
+			},
+			{
+				"name": "WEATHER_DELAY",
+				"type": "String"
+			},
+			{
+				"name": "NAS_DELAY",
+				"type": "String"
+			},
+			{
+				"name": "SECURITY_DELAY",
+				"type": "String"
+			},
+			{
+				"name": "LATE_AIRCRAFT_DELAY",
+				"type": "String"
+			},
+			{
+				"name": "Unnamed: 27",
+				"type": "String"
+			}
+		]
+	}
+}

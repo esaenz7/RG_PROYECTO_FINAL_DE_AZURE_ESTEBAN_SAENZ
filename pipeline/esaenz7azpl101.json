@@ -918,7 +918,14 @@
 			{
 				"name": "esaenz7azcd201",
 				"type": "Copy",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "esaenz7azgm101",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -932,7 +939,7 @@
 				}
 			},
 			{
-				"name": "Switch1",
+				"name": "esaenz7azsw101",
 				"type": "Switch",
 				"dependsOn": [
 					{
@@ -944,6 +951,10 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
+					"on": {
+						"value": "@activity('esaenz7azgm101').output",
+						"type": "Expression"
+					},
 					"cases": []
 				}
 			}

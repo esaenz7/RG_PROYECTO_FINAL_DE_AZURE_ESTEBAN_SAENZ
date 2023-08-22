@@ -894,7 +894,8 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"filesystem": "esaenzazdl101",
-							"path": "bronze"
+							"path": "bronze",
+							"filename": "data1.csv"
 						}
 					},
 					"fieldList": [

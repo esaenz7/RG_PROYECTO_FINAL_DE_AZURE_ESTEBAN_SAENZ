@@ -1044,11 +1044,11 @@
 						"type": "DataFlowReference",
 						"parameters": {
 							"column101": {
-								"value": "'@{'ORIGIN'}'",
+								"value": "'@{'City'}'",
 								"type": "Expression"
 							},
 							"column102": {
-								"value": "'@{'Code1'}'",
+								"value": "'@{'City'}'",
 								"type": "Expression"
 							},
 							"column201": {

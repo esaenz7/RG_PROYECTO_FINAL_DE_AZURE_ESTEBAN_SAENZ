@@ -55,7 +55,7 @@
 				"     validateSchema: false,",
 				"     inferDriftedColumnTypes: true,",
 				"     ignoreNoFilesFound: false) ~> source2",
-				"source1, source2 join(byPosition(4) == byPosition(5),",
+				"source1, source2 join(toString(byPosition(4)) == toString(byPosition(5)),",
 				"     joinType:'left',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",

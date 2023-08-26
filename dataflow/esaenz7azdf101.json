@@ -53,7 +53,7 @@
 				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> source2",
-				"source1, source2 join(fuzzyCompare($column101, ERROR_FUNCTION(''), 90.00),",
+				"source1, source2 join(fuzzyCompare($column101, $column102, 90.00),",
 				"     joinType:'inner',",
 				"     matchType:'fuzzy',",
 				"     ignoreSpaces: false,",

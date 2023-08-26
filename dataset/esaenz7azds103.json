@@ -11,7 +11,7 @@
 		"parameters": {
 			"filename": {
 				"type": "string",
-				"defaultValue": "*.csv"
+				"defaultValue": "weather.csv"
 			},
 			"path": {
 				"type": "String",

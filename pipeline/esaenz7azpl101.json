@@ -1030,19 +1030,19 @@
 						"type": "DataFlowReference",
 						"parameters": {
 							"column101": {
-								"value": "'@{\"ORIGIN\"}'",
+								"value": "'@{ORIGIN}'",
 								"type": "Expression"
 							},
 							"column102": {
-								"value": "'@{\"Column6\"}'",
+								"value": "'@{Column6}'",
 								"type": "Expression"
 							},
 							"column201": {
-								"value": "'@{\"DEST\"}'",
+								"value": "'@{DEST}'",
 								"type": "Expression"
 							},
 							"column202": {
-								"value": "'@{\"Column6\"}'",
+								"value": "'@{Column6}'",
 								"type": "Expression"
 							}
 						},

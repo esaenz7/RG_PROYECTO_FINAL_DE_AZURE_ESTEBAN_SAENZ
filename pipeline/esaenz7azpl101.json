@@ -1028,6 +1028,9 @@
 					"dataflow": {
 						"referenceName": "esaenz7azdf101",
 						"type": "DataFlowReference",
+						"parameters": {
+							"column101": "\"ORIGIN\""
+						},
 						"datasetParameters": {
 							"source1": {
 								"filesystem": "esaenzazdl101",

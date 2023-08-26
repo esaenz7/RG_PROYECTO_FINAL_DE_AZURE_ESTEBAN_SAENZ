@@ -54,6 +54,7 @@
 				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     inferDriftedColumnTypes: true,",
+				"     limit: 100,",
 				"     ignoreNoFilesFound: false) ~> source2",
 				"source1, source2 join(toString(byName($column101)) == toString(byName($column102)),",
 				"     joinType:'inner',",

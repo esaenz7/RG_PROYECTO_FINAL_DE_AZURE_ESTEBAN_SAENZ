@@ -93,7 +93,7 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> join2",
-				"join1, join2 join(toString(byName($column401)) == toString(byName($column402)),",
+				"join1, join2 join(toString(byName($column301)) == toString(byName($column302)),",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",

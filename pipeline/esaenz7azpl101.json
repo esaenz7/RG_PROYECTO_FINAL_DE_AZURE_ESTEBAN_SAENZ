@@ -1002,7 +1002,20 @@
 			{
 				"name": "Data flow1",
 				"type": "ExecuteDataFlow",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "esaenz7azcd101",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "esaenz7azcd102",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,

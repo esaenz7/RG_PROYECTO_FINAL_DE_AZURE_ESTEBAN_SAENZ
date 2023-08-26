@@ -1029,10 +1029,7 @@
 						"referenceName": "esaenz7azdf101",
 						"type": "DataFlowReference",
 						"parameters": {
-							"column101": {
-								"value": "'@{ORIGIN}'",
-								"type": "Expression"
-							},
+							"column101": "toString(ORIGIN)",
 							"column102": {
 								"value": "'@{Column6}'",
 								"type": "Expression"

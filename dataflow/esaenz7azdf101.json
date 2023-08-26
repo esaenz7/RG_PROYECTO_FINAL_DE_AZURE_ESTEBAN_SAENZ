@@ -70,7 +70,7 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> join1",
-				"join1, source3 join(toString(byName($column301)) == toString(byName($column302)),",
+				"source1, source3 join(toString(byName($column301)) == toString(byName($column302)),",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",

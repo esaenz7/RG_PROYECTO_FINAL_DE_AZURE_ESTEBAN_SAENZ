@@ -1,5 +1,5 @@
 {
-	"name": "dataflow1",
+	"name": "esaenz7azdf101",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
@@ -9,7 +9,7 @@
 						"referenceName": "esaenz7azdl101",
 						"type": "DatasetReference"
 					},
-					"name": "source1"
+					"name": "esaenz7azos101"
 				}
 			],
 			"sinks": [],
@@ -18,7 +18,7 @@
 				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     inferDriftedColumnTypes: true,",
-				"     ignoreNoFilesFound: false) ~> source1"
+				"     ignoreNoFilesFound: false) ~> esaenz7azos101"
 			]
 		}
 	}

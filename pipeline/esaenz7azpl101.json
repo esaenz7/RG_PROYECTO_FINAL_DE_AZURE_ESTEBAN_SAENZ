@@ -1046,6 +1046,14 @@
 							"column202": {
 								"value": "'@{'Column5'}'",
 								"type": "Expression"
+							},
+							"column301": {
+								"value": "'@{'Column3'}'",
+								"type": "Expression"
+							},
+							"column302": {
+								"value": "'@{'City'}'",
+								"type": "Expression"
 							}
 						},
 						"datasetParameters": {
@@ -1058,6 +1066,11 @@
 								"filesystem": "esaenzazdl101",
 								"path": "bronze",
 								"filename": "data2.csv"
+							},
+							"source3": {
+								"filesystem": "esaenzazdl101",
+								"path": "bronze",
+								"filename": "data3.csv"
 							}
 						}
 					},

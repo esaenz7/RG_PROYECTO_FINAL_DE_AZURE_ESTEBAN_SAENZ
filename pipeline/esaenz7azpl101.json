@@ -1036,6 +1036,14 @@
 							"column102": {
 								"value": "'@{Column5}'",
 								"type": "Expression"
+							},
+							"column201": {
+								"value": "'@{DEST}'",
+								"type": "Expression"
+							},
+							"column202": {
+								"value": "'@{Column6}'",
+								"type": "Expression"
 							}
 						},
 						"datasetParameters": {

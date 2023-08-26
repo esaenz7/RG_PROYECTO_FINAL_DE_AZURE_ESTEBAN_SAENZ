@@ -25,21 +25,10 @@
 						"referenceName": "esaenz7azdl101",
 						"type": "DatasetReference"
 					},
-					"name": "sink1"
-				},
-				{
-					"dataset": {
-						"referenceName": "esaenz7azdl101",
-						"type": "DatasetReference"
-					},
 					"name": "sink2"
 				}
 			],
-			"transformations": [
-				{
-					"name": "join1"
-				}
-			],
+			"transformations": [],
 			"scriptLines": [
 				"parameters{",
 				"     column101 as string,",
@@ -55,18 +44,6 @@
 				"     validateSchema: false,",
 				"     inferDriftedColumnTypes: true,",
 				"     ignoreNoFilesFound: false) ~> source2",
-				"source1, source2 join(toString(byName($column101)) == toString(byName($column102)),",
-				"     joinType:'inner',",
-				"     matchType:'exact',",
-				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> join1",
-				"join1 sink(allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     umask: 0022,",
-				"     preCommands: [],",
-				"     postCommands: [],",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1",
 				"source2 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     umask: 0022,",

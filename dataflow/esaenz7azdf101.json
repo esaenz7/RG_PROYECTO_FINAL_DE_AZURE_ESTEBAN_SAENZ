@@ -64,7 +64,7 @@
 				"     validateSchema: false,",
 				"     inferDriftedColumnTypes: true,",
 				"     ignoreNoFilesFound: false) ~> source3",
-				"source1, source2 join(toString(byName($column101)) == toString(byName($column102))",
+				"source1, source2 join(ERROR_FUNCTION('') == toString(byName($column102))",
 				"     && toString(byName($column201)) == toString(byName($column202)),",
 				"     joinType:'inner',",
 				"     matchType:'exact',",

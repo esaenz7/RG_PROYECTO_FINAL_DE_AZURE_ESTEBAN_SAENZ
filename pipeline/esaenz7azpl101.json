@@ -1019,12 +1019,21 @@
 							"source1": {
 								"filesystem": "esaenzazdl101",
 								"path": "bronze",
-								"filename": "*.csv"
+								"filename": "data1.csv"
 							},
 							"source2": {
 								"filesystem": "esaenzazdl101",
 								"path": "bronze",
 								"filename": "*.csv"
+							}
+						},
+						"linkedServiceParameters": {
+							"source2": {
+								"schemaLinkedService": {
+									"filesystem": "esaenzazdl101",
+									"path": "bronze",
+									"filename": "*.csv"
+								}
 							}
 						}
 					},

@@ -57,7 +57,7 @@
 				"          {Unnamed: 27} as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
+				"     validateSchema: true,",
 				"     inferDriftedColumnTypes: true,",
 				"     ignoreNoFilesFound: false,",
 				"     fileList: true) ~> esaenz7azos101",

@@ -69,7 +69,7 @@
 				"     validateSchema: false,",
 				"     inferDriftedColumnTypes: true,",
 				"     ignoreNoFilesFound: false) ~> source3",
-				"source2, source3 join(toString('City') == toString('City'),",
+				"source2, source3 join(toString(byName($column101)) == toString(byName($column102)),",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",

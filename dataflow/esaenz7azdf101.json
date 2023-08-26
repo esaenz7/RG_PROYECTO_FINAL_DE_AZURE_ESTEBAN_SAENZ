@@ -30,6 +30,9 @@
 			"transformations": [
 				{
 					"name": "join1"
+				},
+				{
+					"name": "join2"
 				}
 			],
 			"scriptLines": [
@@ -37,7 +40,8 @@
 				"     column101 as string,",
 				"     column102 as string,",
 				"     column201 as string,",
-				"     column202 as string",
+				"     column202 as string,",
+				"     parameter1 as string (column301)",
 				"}",
 				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",
@@ -52,11 +56,16 @@
 				"     inferDriftedColumnTypes: true,",
 				"     ignoreNoFilesFound: false) ~> source3",
 				"source1, source2 join(toString(byName($column101)) == toString(byName($column102))",
-				"     && toString(byName($column201)) == ERROR_FUNCTION(''),",
+				"     && toString(byName($column201)) == toString(byName($column202)),",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> join1"
+				"     broadcast: 'auto')~> join1",
+				"join1, source3 join(toString(byName($column301)) == ERROR_FUNCTION(''),",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join2"
 			]
 		}
 	}

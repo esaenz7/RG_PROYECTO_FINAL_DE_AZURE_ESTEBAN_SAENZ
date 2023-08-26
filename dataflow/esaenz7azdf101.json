@@ -69,7 +69,7 @@
 				"     validateSchema: false,",
 				"     inferDriftedColumnTypes: true,",
 				"     ignoreNoFilesFound: false) ~> source3",
-				"source2, source3 join('City' == 'City',",
+				"source2, source3 join(toString('City') == toString('City'),",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",

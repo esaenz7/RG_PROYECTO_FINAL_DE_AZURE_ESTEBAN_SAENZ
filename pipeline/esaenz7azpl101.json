@@ -1030,11 +1030,11 @@
 						"type": "DataFlowReference",
 						"parameters": {
 							"column101": {
-								"value": "'@{\"ORIGIN\"}'",
+								"value": "'@{ORIGIN}'",
 								"type": "Expression"
 							},
 							"column102": {
-								"value": "'@{\"Column5\"}'",
+								"value": "'@{Column5}'",
 								"type": "Expression"
 							}
 						},

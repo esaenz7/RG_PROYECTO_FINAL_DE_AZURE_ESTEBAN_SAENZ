@@ -23,6 +23,9 @@
 			"transformations": [
 				{
 					"name": "join1"
+				},
+				{
+					"name": "select1"
 				}
 			],
 			"scriptLines": [
@@ -79,11 +82,57 @@
 				"     allowSchemaDrift: false,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> esaenz7azos102",
-				"esaenz7azos101, esaenz7azos102 join(ERROR_FUNCTION('') == ERROR_FUNCTION(''),",
+				"esaenz7azos101, esaenz7azos102 join(ORIGIN == Column_6",
+				"     && DEST == Column_6,",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> join1"
+				"     broadcast: 'auto')~> join1",
+				"join1 select(mapColumn(",
+				"          FL_DATE,",
+				"          OP_CARRIER,",
+				"          OP_CARRIER_FL_NUM,",
+				"          ORIGIN,",
+				"          DEST,",
+				"          CRS_DEP_TIME,",
+				"          DEP_TIME,",
+				"          DEP_DELAY,",
+				"          TAXI_OUT,",
+				"          WHEELS_OFF,",
+				"          WHEELS_ON,",
+				"          TAXI_IN,",
+				"          CRS_ARR_TIME,",
+				"          ARR_TIME,",
+				"          ARR_DELAY,",
+				"          CANCELLED,",
+				"          CANCELLATION_CODE,",
+				"          DIVERTED,",
+				"          CRS_ELAPSED_TIME,",
+				"          ACTUAL_ELAPSED_TIME,",
+				"          AIR_TIME,",
+				"          DISTANCE,",
+				"          CARRIER_DELAY,",
+				"          WEATHER_DELAY,",
+				"          NAS_DELAY,",
+				"          SECURITY_DELAY,",
+				"          LATE_AIRCRAFT_DELAY,",
+				"          Column_1,",
+				"          Column_2,",
+				"          Column_3,",
+				"          Column_4,",
+				"          Column_5,",
+				"          Column_6,",
+				"          Column_7,",
+				"          Column_8,",
+				"          Column_9,",
+				"          Column_10,",
+				"          Column_11,",
+				"          Column_12,",
+				"          Column_13,",
+				"          Column_14",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1"
 			]
 		}
 	}

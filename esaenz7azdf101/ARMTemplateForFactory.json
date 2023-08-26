@@ -1038,6 +1038,80 @@
 								"type": "DelimitedTextReadSettings"
 							}
 						}
+					},
+					{
+						"name": "esaenz7azdf101",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [
+							{
+								"activity": "esaenz7azcd101",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							},
+							{
+								"activity": "esaenz7azcd102",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "esaenz7azdf101",
+								"type": "DataFlowReference",
+								"parameters": {
+									"column101": {
+										"value": "'@{\"ORIGIN\"}'",
+										"type": "Expression"
+									},
+									"column102": {
+										"value": "'@{\"Column6\"}'",
+										"type": "Expression"
+									},
+									"column201": {
+										"value": "'@{\"DEST\"}'",
+										"type": "Expression"
+									},
+									"column202": {
+										"value": "'@{\"Column6\"}'",
+										"type": "Expression"
+									}
+								},
+								"datasetParameters": {
+									"source1": {
+										"filesystem": "esaenzazdl101",
+										"path": "bronze",
+										"filename": "data1.csv"
+									},
+									"source2": {
+										"filesystem": "esaenzazdl101",
+										"path": "bronze",
+										"filename": "data2.csv"
+									},
+									"sink1": {
+										"filesystem": "esaenzazdl101",
+										"path": "silver",
+										"filename": "data201.csv"
+									}
+								},
+								"linkedServiceParameters": {}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
 					}
 				],
 				"policy": {
@@ -1050,7 +1124,8 @@
 				"[concat(variables('factoryId'), '/datasets/esaenz7azds101')]",
 				"[concat(variables('factoryId'), '/datasets/esaenz7azdl101')]",
 				"[concat(variables('factoryId'), '/datasets/esaenz7azds102')]",
-				"[concat(variables('factoryId'), '/datasets/esaenz7azds103')]"
+				"[concat(variables('factoryId'), '/datasets/esaenz7azds103')]",
+				"[concat(variables('factoryId'), '/dataflows/esaenz7azdf101')]"
 			]
 		},
 		{
@@ -1527,6 +1602,106 @@
 				"typeProperties": {}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/esaenz7azdf101')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "esaenz7azdl101",
+								"type": "DatasetReference"
+							},
+							"name": "source1"
+						},
+						{
+							"dataset": {
+								"referenceName": "esaenz7azdl101",
+								"type": "DatasetReference"
+							},
+							"name": "source2"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "esaenz7azdl101",
+								"type": "DatasetReference"
+							},
+							"name": "sink1"
+						}
+					],
+					"transformations": [
+						{
+							"name": "join1"
+						}
+					],
+					"scriptLines": [
+						"parameters{",
+						"     column101 as string,",
+						"     column102 as string,",
+						"     column201 as string,",
+						"     column202 as string",
+						"}",
+						"source(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> source1",
+						"source(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> source2",
+						"source1, source2 join($column101 == $column102",
+						"     && $column201 == $column202,",
+						"     joinType:'inner',",
+						"     matchType:'exact',",
+						"     ignoreSpaces: false,",
+						"     broadcast: 'auto')~> join1",
+						"join1 sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     umask: 0022,",
+						"     preCommands: [],",
+						"     postCommands: [],",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> sink1"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/esaenz7azdl101')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/trigger1')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "esaenz7azpl101",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Minute",
+						"interval": 15,
+						"startTime": "2023-08-26T18:11:00Z",
+						"timeZone": "UTC"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/esaenz7azpl101')]"
+			]
 		}
 	]
 }

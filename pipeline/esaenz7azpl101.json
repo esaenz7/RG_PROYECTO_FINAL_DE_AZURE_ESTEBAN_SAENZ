@@ -1016,8 +1016,6 @@
 			{
 				"name": "esaenz7azdf101",
 				"type": "ExecuteDataFlow",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "esaenz7azcd101",
@@ -1058,22 +1056,6 @@
 								"type": "Expression"
 							},
 							"column202": {
-								"value": "'@{'Code1'}'",
-								"type": "Expression"
-							},
-							"column301": {
-								"value": "'@{'City'}'",
-								"type": "Expression"
-							},
-							"column302": {
-								"value": "'@{'City'}'",
-								"type": "Expression"
-							},
-							"column401": {
-								"value": "'@{'DEST'}'",
-								"type": "Expression"
-							},
-							"column402": {
 								"value": "'@{'Code1'}'",
 								"type": "Expression"
 							}

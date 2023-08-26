@@ -1054,6 +1054,14 @@
 							"column302": {
 								"value": "'@{'City'}'",
 								"type": "Expression"
+							},
+							"column401": {
+								"value": "'@{'DEST'}'",
+								"type": "Expression"
+							},
+							"column402": {
+								"value": "'@{'Code1'}'",
+								"type": "Expression"
 							}
 						},
 						"datasetParameters": {

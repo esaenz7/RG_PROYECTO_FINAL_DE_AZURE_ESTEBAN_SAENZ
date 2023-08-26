@@ -34,50 +34,64 @@
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
-			"firstRowAsHeader": false,
+			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
 		"schema": [
 			{
+				"name": "Id",
 				"type": "String"
 			},
 			{
+				"name": "Airport",
 				"type": "String"
 			},
 			{
+				"name": "City",
 				"type": "String"
 			},
 			{
+				"name": "Country",
 				"type": "String"
 			},
 			{
+				"name": "Code1",
 				"type": "String"
 			},
 			{
+				"name": "Code2",
 				"type": "String"
 			},
 			{
+				"name": "LocationLat",
 				"type": "String"
 			},
 			{
+				"name": "LocationLng",
 				"type": "String"
 			},
 			{
+				"name": "c1",
 				"type": "String"
 			},
 			{
+				"name": "c2",
 				"type": "String"
 			},
 			{
+				"name": "c3",
 				"type": "String"
 			},
 			{
+				"name": "c4",
 				"type": "String"
 			},
 			{
+				"name": "c5",
 				"type": "String"
 			},
 			{
+				"name": "c6",
 				"type": "String"
 			}
 		]

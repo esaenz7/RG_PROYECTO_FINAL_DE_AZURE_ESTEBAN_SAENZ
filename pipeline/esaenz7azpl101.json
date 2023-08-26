@@ -448,154 +448,168 @@
 						"mappings": [
 							{
 								"source": {
+									"name": "Id",
 									"type": "String",
-									"ordinal": 1
+									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Column1",
+									"name": "Id",
 									"type": "String",
 									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
+									"name": "Airport",
 									"type": "String",
-									"ordinal": 2
+									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Column2",
+									"name": "Airport",
 									"type": "String",
 									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
+									"name": "City",
 									"type": "String",
-									"ordinal": 3
+									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Column3",
+									"name": "City",
 									"type": "String",
 									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
+									"name": "Country",
 									"type": "String",
-									"ordinal": 4
+									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Column4",
+									"name": "Country",
 									"type": "String",
 									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
+									"name": "Code1",
 									"type": "String",
-									"ordinal": 5
+									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Column5",
+									"name": "Code1",
 									"type": "String",
 									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
+									"name": "Code2",
 									"type": "String",
-									"ordinal": 6
+									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Column6",
+									"name": "Code2",
 									"type": "String",
 									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
+									"name": "LocationLat",
 									"type": "String",
-									"ordinal": 7
+									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Column7",
+									"name": "LocationLat",
 									"type": "String",
 									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
+									"name": "LocationLng",
 									"type": "String",
-									"ordinal": 8
+									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Column8",
+									"name": "LocationLng",
 									"type": "String",
 									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
+									"name": "c1",
 									"type": "String",
-									"ordinal": 9
+									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Column9",
+									"name": "c1",
 									"type": "String",
 									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
+									"name": "c2",
 									"type": "String",
-									"ordinal": 10
+									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Column10",
+									"name": "c2",
 									"type": "String",
 									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
+									"name": "c3",
 									"type": "String",
-									"ordinal": 11
+									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Column11",
+									"name": "c3",
 									"type": "String",
 									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
+									"name": "c4",
 									"type": "String",
-									"ordinal": 12
+									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Column12",
+									"name": "c4",
 									"type": "String",
 									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
+									"name": "c5",
 									"type": "String",
-									"ordinal": 13
+									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Column13",
+									"name": "c5",
 									"type": "String",
 									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
+									"name": "c6",
 									"type": "String",
-									"ordinal": 14
+									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Column14",
+									"name": "c6",
 									"type": "String",
 									"physicalType": "String"
 								}
@@ -1089,11 +1103,6 @@
 								"filesystem": "esaenzazdl101",
 								"path": "silver",
 								"filename": "data2.csv"
-							},
-							"sink3": {
-								"filesystem": "esaenzazdl101",
-								"path": "silver",
-								"filename": "data3.csv"
 							}
 						}
 					},

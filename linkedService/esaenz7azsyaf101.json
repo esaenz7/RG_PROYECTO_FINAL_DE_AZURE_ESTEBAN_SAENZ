@@ -1,0 +1,12 @@
+{
+	"name": "esaenz7azsyaf101",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSynapseArtifacts",
+		"typeProperties": {
+			"endpoint": "https://esaenz7azsy101.dev.azuresynapse.net",
+			"authentication": "MSI",
+			"workspaceResourceId": "/subscriptions/4a054454-d9c2-464c-8a54-3e310a9f36c8/resourceGroups/RG_PROYECTO_FINAL_DE_AZURE_ESTEBAN_SAENZ/providers/Microsoft.Synapse/workspaces/esaenz7azsy101"
+		}
+	}
+}

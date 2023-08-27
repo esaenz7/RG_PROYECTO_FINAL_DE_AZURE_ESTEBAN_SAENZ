@@ -1081,10 +1081,6 @@
 								"filesystem": "esaenzazdl101",
 								"path": "bronze",
 								"filename": "data3.csv"
-							},
-							"sink101": {
-								"filename": "data1.csv",
-								"path": "silver"
 							}
 						}
 					},

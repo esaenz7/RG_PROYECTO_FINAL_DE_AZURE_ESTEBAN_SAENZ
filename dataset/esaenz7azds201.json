@@ -1,0 +1,95 @@
+{
+	"name": "esaenz7azds201",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "esaenz7azfs101",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"path": "G:\\My Drive\\ACADÉMICO\\Datapath\\Azure\\Proyecto Final"
+			}
+		},
+		"parameters": {
+			"filename": {
+				"type": "string",
+				"defaultValue": "weather.csv"
+			},
+			"path": {
+				"type": "String",
+				"defaultValue": "source"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "FileServerLocation",
+				"fileName": {
+					"value": "@dataset().filename",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().path",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "EventId",
+				"type": "String"
+			},
+			{
+				"name": "Type",
+				"type": "String"
+			},
+			{
+				"name": "Severity",
+				"type": "String"
+			},
+			{
+				"name": "StartTime(UTC)",
+				"type": "String"
+			},
+			{
+				"name": "EndTime(UTC)",
+				"type": "String"
+			},
+			{
+				"name": "TimeZone",
+				"type": "String"
+			},
+			{
+				"name": "AirportCode",
+				"type": "String"
+			},
+			{
+				"name": "LocationLat",
+				"type": "String"
+			},
+			{
+				"name": "LocationLng",
+				"type": "String"
+			},
+			{
+				"name": "City",
+				"type": "String"
+			},
+			{
+				"name": "County",
+				"type": "String"
+			},
+			{
+				"name": "State",
+				"type": "String"
+			},
+			{
+				"name": "ZipCode",
+				"type": "String"
+			}
+		]
+	}
+}

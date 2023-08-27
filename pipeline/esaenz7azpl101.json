@@ -1083,8 +1083,8 @@
 								"filename": "data3.csv"
 							},
 							"sink101": {
-								"filename": "silver",
-								"path": "data1.csv"
+								"filename": "data1.csv",
+								"path": "silver"
 							}
 						}
 					},

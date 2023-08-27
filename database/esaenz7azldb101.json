@@ -1,0 +1,25 @@
+{
+	"name": "esaenz7azldb101",
+	"properties": {
+		"Name": "esaenz7azldb101",
+		"EntityType": "DATABASE",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"Properties": {
+			"IsSyMSCDMDatabase": true
+		},
+		"Source": {
+			"Provider": "ADLS",
+			"Location": "abfss://esaenzazdl101@esaenz7azsa101.dfs.core.windows.net/esaenz7azldb101",
+			"Properties": {
+				"FormatType": "csv",
+				"LinkedServiceName": "esaenz7azsy101-WorkspaceDefaultStorage"
+			}
+		},
+		"PublishStatus": "PUBLISHED",
+		"ObjectVersion": 1,
+		"ObjectId": "6a3d8aa5-f458-47e9-b7bd-19869bdf995f"
+	},
+	"type": "DATABASE"
+}

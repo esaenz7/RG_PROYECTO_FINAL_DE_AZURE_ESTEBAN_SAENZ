@@ -2,11 +2,8 @@
 	"name": "esaenz7azds201",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "esaenz7azfs101",
-			"type": "LinkedServiceReference",
-			"parameters": {
-				"path": "G:\\My Drive\\ACADÉMICO\\Datapath\\Azure\\Proyecto Final"
-			}
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
 		},
 		"parameters": {
 			"filename": {
@@ -22,15 +19,10 @@
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "FileServerLocation",
-				"fileName": {
-					"value": "@dataset().filename",
-					"type": "Expression"
-				},
-				"folderPath": {
-					"value": "@dataset().path",
-					"type": "Expression"
-				}
+				"type": "AzureBlobFSLocation",
+				"fileName": "@dataset().filname",
+				"folderPath": "@dataset().path",
+				"fileSystem": "esaenzazdl101"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",

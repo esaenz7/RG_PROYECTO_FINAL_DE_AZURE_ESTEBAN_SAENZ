@@ -8,7 +8,7 @@
 		"parameters": {
 			"filename": {
 				"type": "string",
-				"defaultValue": "data2.csv"
+				"defaultValue": "data1.csv"
 			},
 			"path": {
 				"type": "String",

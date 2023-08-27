@@ -1049,22 +1049,9 @@
 						"referenceName": "esaenz7azdf101",
 						"type": "DataFlowReference",
 						"parameters": {
-							"column101": {
-								"value": "'@{'Code1'}'",
-								"type": "Expression"
-							},
-							"column102": {
-								"value": "'@{'DEST'}'",
-								"type": "Expression"
-							},
-							"column201": {
-								"value": "'@{'Code2'}'",
-								"type": "Expression"
-							},
-							"column202": {
-								"value": "'@{'AirportCode'}'",
-								"type": "Expression"
-							}
+							"column101": "'Code1'",
+							"column102": "'DEST'",
+							"column201": "'Code2'"
 						},
 						"datasetParameters": {
 							"source1": {

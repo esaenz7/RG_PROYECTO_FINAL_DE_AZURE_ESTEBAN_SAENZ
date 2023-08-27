@@ -15,6 +15,15 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'esaenz7azfs101'"
 		},
+		"esaenz7azsqldb101_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'esaenz7azsqldb101'"
+		},
+		"esaenz7azsy101-WorkspaceDefaultSqlServer_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'esaenz7azsy101-WorkspaceDefaultSqlServer'",
+			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:esaenz7azsy101.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
+		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://esaenz7azsa101.dfs.core.windows.net/"
@@ -30,6 +39,14 @@
 		"esaenz7azkv101_properties_typeProperties_baseUrl": {
 			"type": "string",
 			"defaultValue": "https://esenz7azkv101.vault.azure.net/"
+		},
+		"esaenz7azsy101-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://esaenz7azsa101.dfs.core.windows.net"
+		},
+		"esaenz7azsyar101_properties_typeProperties_endpoint": {
+			"type": "string",
+			"defaultValue": "https://esaenz7azsy101.dev.azuresynapse.net"
 		}
 	},
 	"variables": {
@@ -1089,22 +1106,10 @@
 								"referenceName": "esaenz7azdf101",
 								"type": "DataFlowReference",
 								"parameters": {
-									"column101": {
-										"value": "'@{'Code1'}'",
-										"type": "Expression"
-									},
-									"column102": {
-										"value": "'@{'DEST'}'",
-										"type": "Expression"
-									},
-									"column201": {
-										"value": "'@{'Code2'}'",
-										"type": "Expression"
-									},
-									"column202": {
-										"value": "'@{'AirportCode'}'",
-										"type": "Expression"
-									}
+									"column101": "'Code1'",
+									"column102": "'DEST'",
+									"column201": "'Code2'",
+									"column202": "'AirportCode'"
 								},
 								"datasetParameters": {
 									"source1": {
@@ -1123,16 +1128,16 @@
 										"filename": "data3.csv"
 									},
 									"sink101": {
-										"filename": "data1.csv",
-										"path": "silver"
+										"filesystem": "esaenzazdl101",
+										"path": "silver",
+										"filename": "data1.csv"
 									}
-								},
-								"linkedServiceParameters": {}
+								}
 							},
 							"staging": {},
-							"compute": {
-								"coreCount": 8,
-								"computeType": "General"
+							"integrationRuntime": {
+								"referenceName": "esaenz7azir102",
+								"type": "IntegrationRuntimeReference"
 							},
 							"traceLevel": "Fine"
 						}
@@ -1149,7 +1154,8 @@
 				"[concat(variables('factoryId'), '/datasets/esaenz7azdl101')]",
 				"[concat(variables('factoryId'), '/datasets/esaenz7azds102')]",
 				"[concat(variables('factoryId'), '/datasets/esaenz7azds103')]",
-				"[concat(variables('factoryId'), '/dataflows/esaenz7azdf101')]"
+				"[concat(variables('factoryId'), '/dataflows/esaenz7azdf101')]",
+				"[concat(variables('factoryId'), '/integrationRuntimes/esaenz7azir102')]"
 			]
 		},
 		{
@@ -1836,9 +1842,15 @@
 						"type": "SecureString",
 						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
 					}
+				},
+				"connectVia": {
+					"referenceName": "esaenz7azir102",
+					"type": "IntegrationRuntimeReference"
 				}
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/esaenz7azir102')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/esaenz7azfs101')]",
@@ -1885,6 +1897,89 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/esaenz7azsqldb101')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('esaenz7azsqldb101_connectionString')]"
+				},
+				"connectVia": {
+					"referenceName": "esaenz7azir102",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/esaenz7azir102')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/esaenz7azsy101-WorkspaceDefaultSqlServer')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"parameters": {
+					"DBName": {
+						"type": "String"
+					}
+				},
+				"annotations": [],
+				"type": "AzureSqlDW",
+				"typeProperties": {
+					"connectionString": "[parameters('esaenz7azsy101-WorkspaceDefaultSqlServer_connectionString')]"
+				},
+				"connectVia": {
+					"referenceName": "esaenz7azir102",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/esaenz7azir102')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/esaenz7azsy101-WorkspaceDefaultStorage')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('esaenz7azsy101-WorkspaceDefaultStorage_properties_typeProperties_url')]"
+				},
+				"connectVia": {
+					"referenceName": "esaenz7azir102",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/esaenz7azir102')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/esaenz7azsyar101')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSynapseArtifacts",
+				"typeProperties": {
+					"endpoint": "[parameters('esaenz7azsyar101_properties_typeProperties_endpoint')]",
+					"authentication": "MSI",
+					"workspaceResourceId": "/subscriptions/4a054454-d9c2-464c-8a54-3e310a9f36c8/resourceGroups/RG_PROYECTO_FINAL_DE_AZURE_ESTEBAN_SAENZ/providers/Microsoft.Synapse/workspaces/esaenz7azsy101"
+				},
+				"connectVia": {
+					"referenceName": "esaenz7azir102",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/esaenz7azir102')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/esaenz7azir101')]",
 			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
 			"apiVersion": "2018-06-01",
@@ -1892,6 +1987,27 @@
 				"type": "SelfHosted",
 				"description": "Integration runtime self hosted.",
 				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/esaenz7azir102')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "Managed",
+				"typeProperties": {
+					"computeProperties": {
+						"location": "AutoResolve",
+						"dataFlowProperties": {
+							"computeType": "General",
+							"coreCount": 8,
+							"timeToLive": 10,
+							"cleanup": false,
+							"customProperties": []
+						}
+					}
+				}
 			},
 			"dependsOn": []
 		},
@@ -1928,7 +2044,7 @@
 					"sinks": [
 						{
 							"dataset": {
-								"referenceName": "esaenz7azds201",
+								"referenceName": "esaenz7azdl101",
 								"type": "DatasetReference"
 							},
 							"name": "sink101"
@@ -1973,60 +2089,6 @@
 						"     broadcast: 'auto')~> join2",
 						"join2 sink(allowSchemaDrift: true,",
 						"     validateSchema: false,",
-						"     input(",
-						"          Id as string,",
-						"          Airport as string,",
-						"          City as string,",
-						"          Country as string,",
-						"          Code1 as string,",
-						"          Code2 as string,",
-						"          LocationLat as string,",
-						"          LocationLng as string,",
-						"          c1 as string,",
-						"          c2 as string,",
-						"          c3 as string,",
-						"          c4 as string,",
-						"          c5 as string,",
-						"          c6 as string,",
-						"          FL_DATE as string,",
-						"          OP_CARRIER as string,",
-						"          OP_CARRIER_FL_NUM as string,",
-						"          ORIGIN as string,",
-						"          DEST as string,",
-						"          CRS_DEP_TIME as string,",
-						"          DEP_TIME as string,",
-						"          DEP_DELAY as string,",
-						"          TAXI_OUT as string,",
-						"          WHEELS_OFF as string,",
-						"          WHEELS_ON as string,",
-						"          TAXI_IN as string,",
-						"          CRS_ARR_TIME as string,",
-						"          ARR_TIME as string,",
-						"          ARR_DELAY as string,",
-						"          CANCELLED as string,",
-						"          CANCELLATION_CODE as string,",
-						"          DIVERTED as string,",
-						"          CRS_ELAPSED_TIME as string,",
-						"          ACTUAL_ELAPSED_TIME as string,",
-						"          AIR_TIME as string,",
-						"          DISTANCE as string,",
-						"          CARRIER_DELAY as string,",
-						"          WEATHER_DELAY as string,",
-						"          NAS_DELAY as string,",
-						"          SECURITY_DELAY as string,",
-						"          LATE_AIRCRAFT_DELAY as string,",
-						"          {Unnamed: 27} as string,",
-						"          EventId as string,",
-						"          Type as string,",
-						"          Severity as string,",
-						"          {StartTime(UTC)} as string,",
-						"          {EndTime(UTC)} as string,",
-						"          TimeZone as string,",
-						"          AirportCode as string,",
-						"          County as string,",
-						"          State as string,",
-						"          ZipCode as string",
-						"     ),",
 						"     partitionFileNames:['data1.csv'],",
 						"     umask: 0022,",
 						"     preCommands: [],",
@@ -2038,9 +2100,18 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/esaenz7azdl101')]",
-				"[concat(variables('factoryId'), '/datasets/esaenz7azds201')]"
+				"[concat(variables('factoryId'), '/datasets/esaenz7azdl101')]"
 			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/WorkspaceSystemIdentity')]",
+			"type": "Microsoft.DataFactory/factories/credentials",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "ManagedIdentity",
+				"typeProperties": {}
+			},
+			"dependsOn": []
 		}
 	]
 }

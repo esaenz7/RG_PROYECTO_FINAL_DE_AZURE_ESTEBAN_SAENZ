@@ -11,6 +11,12 @@
 		"esaenz7azfs101_password": {
 			"value": ""
 		},
+		"esaenz7azsqldb101_connectionString": {
+			"value": ""
+		},
+		"esaenz7azsy101-WorkspaceDefaultSqlServer_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:esaenz7azsy101.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
+		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"value": "https://esaenz7azsa101.dfs.core.windows.net/"
 		},
@@ -22,6 +28,12 @@
 		},
 		"esaenz7azkv101_properties_typeProperties_baseUrl": {
 			"value": "https://esenz7azkv101.vault.azure.net/"
+		},
+		"esaenz7azsy101-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"value": "https://esaenz7azsa101.dfs.core.windows.net"
+		},
+		"esaenz7azsyar101_properties_typeProperties_endpoint": {
+			"value": "https://esaenz7azsy101.dev.azuresynapse.net"
 		}
 	}
 }

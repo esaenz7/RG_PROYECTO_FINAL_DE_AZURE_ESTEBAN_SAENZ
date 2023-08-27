@@ -45,8 +45,8 @@
 			],
 			"scriptLines": [
 				"parameters{",
-				"     column101 as string,",
-				"     column102 as string,",
+				"     column101 as string ('Code'),",
+				"     column102 as string (''),",
 				"     column201 as string,",
 				"     column202 as string",
 				"}",

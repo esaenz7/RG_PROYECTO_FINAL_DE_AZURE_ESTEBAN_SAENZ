@@ -37,211 +37,79 @@
 		},
 		"schema": [
 			{
-				"name": "Id",
+				"name": "Prop_0",
 				"type": "String"
 			},
 			{
-				"name": "Airport",
+				"name": "iata",
 				"type": "String"
 			},
 			{
-				"name": "City",
+				"name": "icao2",
 				"type": "String"
 			},
 			{
-				"name": "Country",
+				"name": "date1",
 				"type": "String"
 			},
 			{
-				"name": "Code1",
+				"name": "wtyp",
 				"type": "String"
 			},
 			{
-				"name": "Code2",
+				"name": "wsev",
 				"type": "String"
 			},
 			{
-				"name": "LocationLat",
+				"name": "icao6",
 				"type": "String"
 			},
 			{
-				"name": "LocationLng",
+				"name": "date2",
 				"type": "String"
 			},
 			{
-				"name": "c1",
+				"name": "orig",
 				"type": "String"
 			},
 			{
-				"name": "c2",
+				"name": "dest",
 				"type": "String"
 			},
 			{
-				"name": "c3",
+				"name": "carrier",
 				"type": "String"
 			},
 			{
-				"name": "c4",
+				"name": "depdel",
 				"type": "String"
 			},
 			{
-				"name": "c5",
+				"name": "txout",
 				"type": "String"
 			},
 			{
-				"name": "c6",
+				"name": "selap",
 				"type": "String"
 			},
 			{
-				"name": "FL_DATE",
+				"name": "dist",
 				"type": "String"
 			},
 			{
-				"name": "OP_CARRIER",
+				"name": "wkday",
 				"type": "String"
 			},
 			{
-				"name": "OP_CARRIER_FL_NUM",
+				"name": "month",
 				"type": "String"
 			},
 			{
-				"name": "ORIGIN",
+				"name": "morning",
 				"type": "String"
 			},
 			{
-				"name": "DEST",
-				"type": "String"
-			},
-			{
-				"name": "CRS_DEP_TIME",
-				"type": "String"
-			},
-			{
-				"name": "DEP_TIME",
-				"type": "String"
-			},
-			{
-				"name": "DEP_DELAY",
-				"type": "String"
-			},
-			{
-				"name": "TAXI_OUT",
-				"type": "String"
-			},
-			{
-				"name": "WHEELS_OFF",
-				"type": "String"
-			},
-			{
-				"name": "WHEELS_ON",
-				"type": "String"
-			},
-			{
-				"name": "TAXI_IN",
-				"type": "String"
-			},
-			{
-				"name": "CRS_ARR_TIME",
-				"type": "String"
-			},
-			{
-				"name": "ARR_TIME",
-				"type": "String"
-			},
-			{
-				"name": "ARR_DELAY",
-				"type": "String"
-			},
-			{
-				"name": "CANCELLED",
-				"type": "String"
-			},
-			{
-				"name": "CANCELLATION_CODE",
-				"type": "String"
-			},
-			{
-				"name": "DIVERTED",
-				"type": "String"
-			},
-			{
-				"name": "CRS_ELAPSED_TIME",
-				"type": "String"
-			},
-			{
-				"name": "ACTUAL_ELAPSED_TIME",
-				"type": "String"
-			},
-			{
-				"name": "AIR_TIME",
-				"type": "String"
-			},
-			{
-				"name": "DISTANCE",
-				"type": "String"
-			},
-			{
-				"name": "CARRIER_DELAY",
-				"type": "String"
-			},
-			{
-				"name": "WEATHER_DELAY",
-				"type": "String"
-			},
-			{
-				"name": "NAS_DELAY",
-				"type": "String"
-			},
-			{
-				"name": "SECURITY_DELAY",
-				"type": "String"
-			},
-			{
-				"name": "LATE_AIRCRAFT_DELAY",
-				"type": "String"
-			},
-			{
-				"name": "Unnamed: 27",
-				"type": "String"
-			},
-			{
-				"name": "EventId",
-				"type": "String"
-			},
-			{
-				"name": "Type",
-				"type": "String"
-			},
-			{
-				"name": "Severity",
-				"type": "String"
-			},
-			{
-				"name": "StartTime(UTC)",
-				"type": "String"
-			},
-			{
-				"name": "EndTime(UTC)",
-				"type": "String"
-			},
-			{
-				"name": "TimeZone",
-				"type": "String"
-			},
-			{
-				"name": "AirportCode",
-				"type": "String"
-			},
-			{
-				"name": "County",
-				"type": "String"
-			},
-			{
-				"name": "State",
-				"type": "String"
-			},
-			{
-				"name": "ZipCode",
+				"name": "label",
 				"type": "String"
 			}
 		]

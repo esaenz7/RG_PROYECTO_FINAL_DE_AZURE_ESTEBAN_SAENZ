@@ -1051,7 +1051,8 @@
 						"parameters": {
 							"column101": "'Code1'",
 							"column102": "'DEST'",
-							"column201": "'Code2'"
+							"column201": "'Code2'",
+							"column202": "'AirportCode'"
 						},
 						"datasetParameters": {
 							"source1": {

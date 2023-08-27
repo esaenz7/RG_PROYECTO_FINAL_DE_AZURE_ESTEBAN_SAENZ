@@ -15,15 +15,6 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'esaenz7azfs101'"
 		},
-		"esaenz7azsqldb101_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'esaenz7azsqldb101'"
-		},
-		"esaenz7azsy101-WorkspaceDefaultSqlServer_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'esaenz7azsy101-WorkspaceDefaultSqlServer'",
-			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:esaenz7azsy101.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
-		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://esaenz7azsa101.dfs.core.windows.net/"
@@ -40,11 +31,7 @@
 			"type": "string",
 			"defaultValue": "https://esenz7azkv101.vault.azure.net/"
 		},
-		"esaenz7azsy101-WorkspaceDefaultStorage_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://esaenz7azsa101.dfs.core.windows.net"
-		},
-		"esaenz7azsyar101_properties_typeProperties_endpoint": {
+		"esaenz7azsyaf101_properties_typeProperties_endpoint": {
 			"type": "string",
 			"defaultValue": "https://esaenz7azsy101.dev.azuresynapse.net"
 		},
@@ -81,29 +68,20 @@
 					"esaenz7azfs101_password": {
 						"value": "[parameters('esaenz7azfs101_password')]"
 					},
-					"esaenz7azsqldb101_connectionString": {
-						"value": "[parameters('esaenz7azsqldb101_connectionString')]"
-					},
-					"esaenz7azsy101-WorkspaceDefaultSqlServer_connectionString": {
-						"value": "[parameters('esaenz7azsy101-WorkspaceDefaultSqlServer_connectionString')]"
+					"AzureDataLakeStorage1_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
 					},
 					"esaenz7azkv101_properties_typeProperties_baseUrl": {
 						"value": "[parameters('esaenz7azkv101_properties_typeProperties_baseUrl')]"
 					},
-					"AzureDataLakeStorage1_properties_typeProperties_url": {
-						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+					"esaenz7azsyaf101_properties_typeProperties_endpoint": {
+						"value": "[parameters('esaenz7azsyaf101_properties_typeProperties_endpoint')]"
 					},
 					"esaenz7azfs101_properties_typeProperties_host": {
 						"value": "[parameters('esaenz7azfs101_properties_typeProperties_host')]"
 					},
 					"esaenz7azfs101_properties_typeProperties_userId": {
 						"value": "[parameters('esaenz7azfs101_properties_typeProperties_userId')]"
-					},
-					"esaenz7azsy101-WorkspaceDefaultStorage_properties_typeProperties_url": {
-						"value": "[parameters('esaenz7azsy101-WorkspaceDefaultStorage_properties_typeProperties_url')]"
-					},
-					"esaenz7azsyar101_properties_typeProperties_endpoint": {
-						"value": "[parameters('esaenz7azsyar101_properties_typeProperties_endpoint')]"
 					}
 				}
 			},

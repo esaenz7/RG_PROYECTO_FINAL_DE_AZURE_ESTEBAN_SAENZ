@@ -1048,15 +1048,15 @@
 								"type": "Expression"
 							},
 							"column102": {
-								"value": "'@{'City'}'",
-								"type": "Expression"
-							},
-							"column201": {
 								"value": "'@{'DEST'}'",
 								"type": "Expression"
 							},
+							"column201": {
+								"value": "'@{'Code2'}'",
+								"type": "Expression"
+							},
 							"column202": {
-								"value": "'@{'Code1'}'",
+								"value": "'@{'AirportCode'}'",
 								"type": "Expression"
 							}
 						},

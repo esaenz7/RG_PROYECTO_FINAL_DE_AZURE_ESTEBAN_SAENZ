@@ -488,154 +488,168 @@
 								"mappings": [
 									{
 										"source": {
+											"name": "Id",
 											"type": "String",
-											"ordinal": 1
+											"physicalType": "String"
 										},
 										"sink": {
-											"name": "Column1",
+											"name": "Id",
 											"type": "String",
 											"physicalType": "String"
 										}
 									},
 									{
 										"source": {
+											"name": "Airport",
 											"type": "String",
-											"ordinal": 2
+											"physicalType": "String"
 										},
 										"sink": {
-											"name": "Column2",
+											"name": "Airport",
 											"type": "String",
 											"physicalType": "String"
 										}
 									},
 									{
 										"source": {
+											"name": "City",
 											"type": "String",
-											"ordinal": 3
+											"physicalType": "String"
 										},
 										"sink": {
-											"name": "Column3",
+											"name": "City",
 											"type": "String",
 											"physicalType": "String"
 										}
 									},
 									{
 										"source": {
+											"name": "Country",
 											"type": "String",
-											"ordinal": 4
+											"physicalType": "String"
 										},
 										"sink": {
-											"name": "Column4",
+											"name": "Country",
 											"type": "String",
 											"physicalType": "String"
 										}
 									},
 									{
 										"source": {
+											"name": "Code1",
 											"type": "String",
-											"ordinal": 5
+											"physicalType": "String"
 										},
 										"sink": {
-											"name": "Column5",
+											"name": "Code1",
 											"type": "String",
 											"physicalType": "String"
 										}
 									},
 									{
 										"source": {
+											"name": "Code2",
 											"type": "String",
-											"ordinal": 6
+											"physicalType": "String"
 										},
 										"sink": {
-											"name": "Column6",
+											"name": "Code2",
 											"type": "String",
 											"physicalType": "String"
 										}
 									},
 									{
 										"source": {
+											"name": "LocationLat",
 											"type": "String",
-											"ordinal": 7
+											"physicalType": "String"
 										},
 										"sink": {
-											"name": "Column7",
+											"name": "LocationLat",
 											"type": "String",
 											"physicalType": "String"
 										}
 									},
 									{
 										"source": {
+											"name": "LocationLng",
 											"type": "String",
-											"ordinal": 8
+											"physicalType": "String"
 										},
 										"sink": {
-											"name": "Column8",
+											"name": "LocationLng",
 											"type": "String",
 											"physicalType": "String"
 										}
 									},
 									{
 										"source": {
+											"name": "c1",
 											"type": "String",
-											"ordinal": 9
+											"physicalType": "String"
 										},
 										"sink": {
-											"name": "Column9",
+											"name": "c1",
 											"type": "String",
 											"physicalType": "String"
 										}
 									},
 									{
 										"source": {
+											"name": "c2",
 											"type": "String",
-											"ordinal": 10
+											"physicalType": "String"
 										},
 										"sink": {
-											"name": "Column10",
+											"name": "c2",
 											"type": "String",
 											"physicalType": "String"
 										}
 									},
 									{
 										"source": {
+											"name": "c3",
 											"type": "String",
-											"ordinal": 11
+											"physicalType": "String"
 										},
 										"sink": {
-											"name": "Column11",
+											"name": "c3",
 											"type": "String",
 											"physicalType": "String"
 										}
 									},
 									{
 										"source": {
+											"name": "c4",
 											"type": "String",
-											"ordinal": 12
+											"physicalType": "String"
 										},
 										"sink": {
-											"name": "Column12",
+											"name": "c4",
 											"type": "String",
 											"physicalType": "String"
 										}
 									},
 									{
 										"source": {
+											"name": "c5",
 											"type": "String",
-											"ordinal": 13
+											"physicalType": "String"
 										},
 										"sink": {
-											"name": "Column13",
+											"name": "c5",
 											"type": "String",
 											"physicalType": "String"
 										}
 									},
 									{
 										"source": {
+											"name": "c6",
 											"type": "String",
-											"ordinal": 14
+											"physicalType": "String"
 										},
 										"sink": {
-											"name": "Column14",
+											"name": "c6",
 											"type": "String",
 											"physicalType": "String"
 										}
@@ -1054,6 +1068,12 @@
 								"dependencyConditions": [
 									"Succeeded"
 								]
+							},
+							{
+								"activity": "esaenz7azcd103",
+								"dependencyConditions": [
+									"Succeeded"
+								]
 							}
 						],
 						"policy": {
@@ -1070,19 +1090,19 @@
 								"type": "DataFlowReference",
 								"parameters": {
 									"column101": {
-										"value": "'@{\"ORIGIN\"}'",
+										"value": "'@{'Code1'}'",
 										"type": "Expression"
 									},
 									"column102": {
-										"value": "'@{\"Column6\"}'",
+										"value": "'@{'DEST'}'",
 										"type": "Expression"
 									},
 									"column201": {
-										"value": "'@{\"DEST\"}'",
+										"value": "'@{'Code2'}'",
 										"type": "Expression"
 									},
 									"column202": {
-										"value": "'@{\"Column6\"}'",
+										"value": "'@{'AirportCode'}'",
 										"type": "Expression"
 									}
 								},
@@ -1097,10 +1117,14 @@
 										"path": "bronze",
 										"filename": "data2.csv"
 									},
-									"sink1": {
+									"source3": {
 										"filesystem": "esaenzazdl101",
-										"path": "silver",
-										"filename": "data201.csv"
+										"path": "bronze",
+										"filename": "data3.csv"
+									},
+									"sink101": {
+										"filename": "data1.csv",
+										"path": "silver"
 									}
 								},
 								"linkedServiceParameters": {}
@@ -1378,50 +1402,64 @@
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
-					"firstRowAsHeader": false,
+					"firstRowAsHeader": true,
 					"quoteChar": "\""
 				},
 				"schema": [
 					{
+						"name": "Id",
 						"type": "String"
 					},
 					{
+						"name": "Airport",
 						"type": "String"
 					},
 					{
+						"name": "City",
 						"type": "String"
 					},
 					{
+						"name": "Country",
 						"type": "String"
 					},
 					{
+						"name": "Code1",
 						"type": "String"
 					},
 					{
+						"name": "Code2",
 						"type": "String"
 					},
 					{
+						"name": "LocationLat",
 						"type": "String"
 					},
 					{
+						"name": "LocationLng",
 						"type": "String"
 					},
 					{
+						"name": "c1",
 						"type": "String"
 					},
 					{
+						"name": "c2",
 						"type": "String"
 					},
 					{
+						"name": "c3",
 						"type": "String"
 					},
 					{
+						"name": "c4",
 						"type": "String"
 					},
 					{
+						"name": "c5",
 						"type": "String"
 					},
 					{
+						"name": "c6",
 						"type": "String"
 					}
 				]
@@ -1445,7 +1483,7 @@
 				"parameters": {
 					"filename": {
 						"type": "string",
-						"defaultValue": "*.csv"
+						"defaultValue": "weather.csv"
 					},
 					"path": {
 						"type": "String",
@@ -1528,6 +1566,260 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/esaenz7azfs101')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/esaenz7azds201')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"filename": {
+						"type": "string",
+						"defaultValue": "data1.csv"
+					},
+					"path": {
+						"type": "String",
+						"defaultValue": "silver"
+					}
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "@dataset().filename",
+							"type": "Expression"
+						},
+						"folderPath": {
+							"value": "@dataset().path",
+							"type": "Expression"
+						},
+						"fileSystem": "esaenzazdl101"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "Id",
+						"type": "String"
+					},
+					{
+						"name": "Airport",
+						"type": "String"
+					},
+					{
+						"name": "City",
+						"type": "String"
+					},
+					{
+						"name": "Country",
+						"type": "String"
+					},
+					{
+						"name": "Code1",
+						"type": "String"
+					},
+					{
+						"name": "Code2",
+						"type": "String"
+					},
+					{
+						"name": "LocationLat",
+						"type": "String"
+					},
+					{
+						"name": "LocationLng",
+						"type": "String"
+					},
+					{
+						"name": "c1",
+						"type": "String"
+					},
+					{
+						"name": "c2",
+						"type": "String"
+					},
+					{
+						"name": "c3",
+						"type": "String"
+					},
+					{
+						"name": "c4",
+						"type": "String"
+					},
+					{
+						"name": "c5",
+						"type": "String"
+					},
+					{
+						"name": "c6",
+						"type": "String"
+					},
+					{
+						"name": "FL_DATE",
+						"type": "String"
+					},
+					{
+						"name": "OP_CARRIER",
+						"type": "String"
+					},
+					{
+						"name": "OP_CARRIER_FL_NUM",
+						"type": "String"
+					},
+					{
+						"name": "ORIGIN",
+						"type": "String"
+					},
+					{
+						"name": "DEST",
+						"type": "String"
+					},
+					{
+						"name": "CRS_DEP_TIME",
+						"type": "String"
+					},
+					{
+						"name": "DEP_TIME",
+						"type": "String"
+					},
+					{
+						"name": "DEP_DELAY",
+						"type": "String"
+					},
+					{
+						"name": "TAXI_OUT",
+						"type": "String"
+					},
+					{
+						"name": "WHEELS_OFF",
+						"type": "String"
+					},
+					{
+						"name": "WHEELS_ON",
+						"type": "String"
+					},
+					{
+						"name": "TAXI_IN",
+						"type": "String"
+					},
+					{
+						"name": "CRS_ARR_TIME",
+						"type": "String"
+					},
+					{
+						"name": "ARR_TIME",
+						"type": "String"
+					},
+					{
+						"name": "ARR_DELAY",
+						"type": "String"
+					},
+					{
+						"name": "CANCELLED",
+						"type": "String"
+					},
+					{
+						"name": "CANCELLATION_CODE",
+						"type": "String"
+					},
+					{
+						"name": "DIVERTED",
+						"type": "String"
+					},
+					{
+						"name": "CRS_ELAPSED_TIME",
+						"type": "String"
+					},
+					{
+						"name": "ACTUAL_ELAPSED_TIME",
+						"type": "String"
+					},
+					{
+						"name": "AIR_TIME",
+						"type": "String"
+					},
+					{
+						"name": "DISTANCE",
+						"type": "String"
+					},
+					{
+						"name": "CARRIER_DELAY",
+						"type": "String"
+					},
+					{
+						"name": "WEATHER_DELAY",
+						"type": "String"
+					},
+					{
+						"name": "NAS_DELAY",
+						"type": "String"
+					},
+					{
+						"name": "SECURITY_DELAY",
+						"type": "String"
+					},
+					{
+						"name": "LATE_AIRCRAFT_DELAY",
+						"type": "String"
+					},
+					{
+						"name": "Unnamed: 27",
+						"type": "String"
+					},
+					{
+						"name": "EventId",
+						"type": "String"
+					},
+					{
+						"name": "Type",
+						"type": "String"
+					},
+					{
+						"name": "Severity",
+						"type": "String"
+					},
+					{
+						"name": "StartTime(UTC)",
+						"type": "String"
+					},
+					{
+						"name": "EndTime(UTC)",
+						"type": "String"
+					},
+					{
+						"name": "TimeZone",
+						"type": "String"
+					},
+					{
+						"name": "AirportCode",
+						"type": "String"
+					},
+					{
+						"name": "County",
+						"type": "String"
+					},
+					{
+						"name": "State",
+						"type": "String"
+					},
+					{
+						"name": "ZipCode",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1')]"
 			]
 		},
 		{
@@ -1624,20 +1916,30 @@
 								"type": "DatasetReference"
 							},
 							"name": "source2"
-						}
-					],
-					"sinks": [
+						},
 						{
 							"dataset": {
 								"referenceName": "esaenz7azdl101",
 								"type": "DatasetReference"
 							},
-							"name": "sink1"
+							"name": "source3"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "esaenz7azds201",
+								"type": "DatasetReference"
+							},
+							"name": "sink101"
 						}
 					],
 					"transformations": [
 						{
 							"name": "join1"
+						},
+						{
+							"name": "join2"
 						}
 					],
 					"scriptLines": [
@@ -1649,58 +1951,95 @@
 						"}",
 						"source(allowSchemaDrift: true,",
 						"     validateSchema: false,",
+						"     inferDriftedColumnTypes: true,",
 						"     ignoreNoFilesFound: false) ~> source1",
 						"source(allowSchemaDrift: true,",
 						"     validateSchema: false,",
+						"     inferDriftedColumnTypes: true,",
 						"     ignoreNoFilesFound: false) ~> source2",
-						"source1, source2 join($column101 == $column102",
-						"     && $column201 == $column202,",
+						"source(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     inferDriftedColumnTypes: true,",
+						"     ignoreNoFilesFound: false) ~> source3",
+						"source2, source1 join(toString(byName($column101)) == toString(byName($column102)),",
 						"     joinType:'inner',",
 						"     matchType:'exact',",
 						"     ignoreSpaces: false,",
 						"     broadcast: 'auto')~> join1",
-						"join1 sink(allowSchemaDrift: true,",
+						"join1, source3 join(toString(byName($column201)) == toString(byName($column202)),",
+						"     joinType:'inner',",
+						"     matchType:'exact',",
+						"     ignoreSpaces: false,",
+						"     broadcast: 'auto')~> join2",
+						"join2 sink(allowSchemaDrift: true,",
 						"     validateSchema: false,",
+						"     input(",
+						"          Id as string,",
+						"          Airport as string,",
+						"          City as string,",
+						"          Country as string,",
+						"          Code1 as string,",
+						"          Code2 as string,",
+						"          LocationLat as string,",
+						"          LocationLng as string,",
+						"          c1 as string,",
+						"          c2 as string,",
+						"          c3 as string,",
+						"          c4 as string,",
+						"          c5 as string,",
+						"          c6 as string,",
+						"          FL_DATE as string,",
+						"          OP_CARRIER as string,",
+						"          OP_CARRIER_FL_NUM as string,",
+						"          ORIGIN as string,",
+						"          DEST as string,",
+						"          CRS_DEP_TIME as string,",
+						"          DEP_TIME as string,",
+						"          DEP_DELAY as string,",
+						"          TAXI_OUT as string,",
+						"          WHEELS_OFF as string,",
+						"          WHEELS_ON as string,",
+						"          TAXI_IN as string,",
+						"          CRS_ARR_TIME as string,",
+						"          ARR_TIME as string,",
+						"          ARR_DELAY as string,",
+						"          CANCELLED as string,",
+						"          CANCELLATION_CODE as string,",
+						"          DIVERTED as string,",
+						"          CRS_ELAPSED_TIME as string,",
+						"          ACTUAL_ELAPSED_TIME as string,",
+						"          AIR_TIME as string,",
+						"          DISTANCE as string,",
+						"          CARRIER_DELAY as string,",
+						"          WEATHER_DELAY as string,",
+						"          NAS_DELAY as string,",
+						"          SECURITY_DELAY as string,",
+						"          LATE_AIRCRAFT_DELAY as string,",
+						"          {Unnamed: 27} as string,",
+						"          EventId as string,",
+						"          Type as string,",
+						"          Severity as string,",
+						"          {StartTime(UTC)} as string,",
+						"          {EndTime(UTC)} as string,",
+						"          TimeZone as string,",
+						"          AirportCode as string,",
+						"          County as string,",
+						"          State as string,",
+						"          ZipCode as string",
+						"     ),",
+						"     partitionFileNames:['data1.csv'],",
 						"     umask: 0022,",
 						"     preCommands: [],",
 						"     postCommands: [],",
 						"     skipDuplicateMapInputs: true,",
-						"     skipDuplicateMapOutputs: true) ~> sink1"
+						"     skipDuplicateMapOutputs: true,",
+						"     partitionBy('hash', 1)) ~> sink101"
 					]
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/esaenz7azdl101')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/trigger1')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "esaenz7azpl101",
-							"type": "PipelineReference"
-						},
-						"parameters": {}
-					}
-				],
-				"type": "ScheduleTrigger",
-				"typeProperties": {
-					"recurrence": {
-						"frequency": "Minute",
-						"interval": 15,
-						"startTime": "2023-08-26T18:11:00Z",
-						"timeZone": "UTC"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/esaenz7azpl101')]"
+				"[concat(variables('factoryId'), '/datasets/esaenz7azdl101')]",
+				"[concat(variables('factoryId'), '/datasets/esaenz7azds201')]"
 			]
 		}
 	]

@@ -32,7 +32,7 @@
 						"referenceName": "esaenz7azdl101",
 						"type": "DatasetReference"
 					},
-					"name": "sink2"
+					"name": "sink1"
 				}
 			],
 			"transformations": [
@@ -74,13 +74,13 @@
 				"     broadcast: 'auto')~> join2",
 				"join2 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     partitionFileNames:['data2.csv'],",
+				"     partitionFileNames:['data1.csv'],",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     partitionBy('hash', 1)) ~> sink2"
+				"     partitionBy('hash', 1)) ~> sink1"
 			]
 		}
 	}

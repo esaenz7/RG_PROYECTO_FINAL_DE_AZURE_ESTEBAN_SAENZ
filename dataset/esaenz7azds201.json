@@ -8,11 +8,11 @@
 		"parameters": {
 			"filename": {
 				"type": "string",
-				"defaultValue": "weather.csv"
+				"defaultValue": "data2.csv"
 			},
 			"path": {
 				"type": "String",
-				"defaultValue": "source"
+				"defaultValue": "silver"
 			}
 		},
 		"annotations": [],
@@ -20,7 +20,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "@dataset().filname",
+				"fileName": "@dataset().filename",
 				"folderPath": "@dataset().path",
 				"fileSystem": "esaenzazdl101"
 			},

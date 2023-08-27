@@ -1104,7 +1104,27 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"snapshot": true
+					"notebook": {
+						"referenceName": {
+							"value": "esaenz7azipynb101",
+							"type": "Expression"
+						},
+						"type": "NotebookReference"
+					},
+					"snapshot": true,
+					"sparkPool": {
+						"referenceName": {
+							"value": "esaenz7azsp101",
+							"type": "Expression"
+						},
+						"type": "BigDataPoolReference"
+					},
+					"executorSize": "Small",
+					"driverSize": "Small"
+				},
+				"linkedServiceName": {
+					"referenceName": "esaenz7azsyaf101",
+					"type": "LinkedServiceReference"
 				}
 			}
 		],

@@ -1,0 +1,249 @@
+{
+	"name": "esaenz7azds301",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"filename": {
+				"type": "string",
+				"defaultValue": "data1.csv"
+			},
+			"path": {
+				"type": "String",
+				"defaultValue": "gold"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().filename",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().path",
+					"type": "Expression"
+				},
+				"fileSystem": "esaenzazdl101"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Id",
+				"type": "String"
+			},
+			{
+				"name": "Airport",
+				"type": "String"
+			},
+			{
+				"name": "City",
+				"type": "String"
+			},
+			{
+				"name": "Country",
+				"type": "String"
+			},
+			{
+				"name": "Code1",
+				"type": "String"
+			},
+			{
+				"name": "Code2",
+				"type": "String"
+			},
+			{
+				"name": "LocationLat",
+				"type": "String"
+			},
+			{
+				"name": "LocationLng",
+				"type": "String"
+			},
+			{
+				"name": "c1",
+				"type": "String"
+			},
+			{
+				"name": "c2",
+				"type": "String"
+			},
+			{
+				"name": "c3",
+				"type": "String"
+			},
+			{
+				"name": "c4",
+				"type": "String"
+			},
+			{
+				"name": "c5",
+				"type": "String"
+			},
+			{
+				"name": "c6",
+				"type": "String"
+			},
+			{
+				"name": "FL_DATE",
+				"type": "String"
+			},
+			{
+				"name": "OP_CARRIER",
+				"type": "String"
+			},
+			{
+				"name": "OP_CARRIER_FL_NUM",
+				"type": "String"
+			},
+			{
+				"name": "ORIGIN",
+				"type": "String"
+			},
+			{
+				"name": "DEST",
+				"type": "String"
+			},
+			{
+				"name": "CRS_DEP_TIME",
+				"type": "String"
+			},
+			{
+				"name": "DEP_TIME",
+				"type": "String"
+			},
+			{
+				"name": "DEP_DELAY",
+				"type": "String"
+			},
+			{
+				"name": "TAXI_OUT",
+				"type": "String"
+			},
+			{
+				"name": "WHEELS_OFF",
+				"type": "String"
+			},
+			{
+				"name": "WHEELS_ON",
+				"type": "String"
+			},
+			{
+				"name": "TAXI_IN",
+				"type": "String"
+			},
+			{
+				"name": "CRS_ARR_TIME",
+				"type": "String"
+			},
+			{
+				"name": "ARR_TIME",
+				"type": "String"
+			},
+			{
+				"name": "ARR_DELAY",
+				"type": "String"
+			},
+			{
+				"name": "CANCELLED",
+				"type": "String"
+			},
+			{
+				"name": "CANCELLATION_CODE",
+				"type": "String"
+			},
+			{
+				"name": "DIVERTED",
+				"type": "String"
+			},
+			{
+				"name": "CRS_ELAPSED_TIME",
+				"type": "String"
+			},
+			{
+				"name": "ACTUAL_ELAPSED_TIME",
+				"type": "String"
+			},
+			{
+				"name": "AIR_TIME",
+				"type": "String"
+			},
+			{
+				"name": "DISTANCE",
+				"type": "String"
+			},
+			{
+				"name": "CARRIER_DELAY",
+				"type": "String"
+			},
+			{
+				"name": "WEATHER_DELAY",
+				"type": "String"
+			},
+			{
+				"name": "NAS_DELAY",
+				"type": "String"
+			},
+			{
+				"name": "SECURITY_DELAY",
+				"type": "String"
+			},
+			{
+				"name": "LATE_AIRCRAFT_DELAY",
+				"type": "String"
+			},
+			{
+				"name": "Unnamed: 27",
+				"type": "String"
+			},
+			{
+				"name": "EventId",
+				"type": "String"
+			},
+			{
+				"name": "Type",
+				"type": "String"
+			},
+			{
+				"name": "Severity",
+				"type": "String"
+			},
+			{
+				"name": "StartTime(UTC)",
+				"type": "String"
+			},
+			{
+				"name": "EndTime(UTC)",
+				"type": "String"
+			},
+			{
+				"name": "TimeZone",
+				"type": "String"
+			},
+			{
+				"name": "AirportCode",
+				"type": "String"
+			},
+			{
+				"name": "County",
+				"type": "String"
+			},
+			{
+				"name": "State",
+				"type": "String"
+			},
+			{
+				"name": "ZipCode",
+				"type": "String"
+			}
+		]
+	}
+}

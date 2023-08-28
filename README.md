@@ -42,11 +42,13 @@ A partir de esta capa los datos pueden ser utilizados como insumos para modelos 
 ![image](https://github.com/esaenz7/RG_PROYECTO_FINAL_DE_AZURE_ESTEBAN_SAENZ/assets/72483241/82d991da-6ca9-4dba-8f14-30f85414365a)
 * Pipeline:
 ![image](https://github.com/esaenz7/RG_PROYECTO_FINAL_DE_AZURE_ESTEBAN_SAENZ/assets/72483241/8c3d1431-873f-4a97-9241-7f7c541c9f6e)
+![image](https://github.com/esaenz7/RG_PROYECTO_FINAL_DE_AZURE_ESTEBAN_SAENZ/assets/72483241/698937b0-7330-4ade-bb2b-743b84f870ac)
 * Trigger:
 ![image](https://github.com/esaenz7/RG_PROYECTO_FINAL_DE_AZURE_ESTEBAN_SAENZ/assets/72483241/7f772442-a8e7-4bfe-8da4-0bc50e01db37)
 * Vista de las fuentes de datos iniciales (locales):
 ![image](https://github.com/esaenz7/RG_PROYECTO_FINAL_DE_AZURE_ESTEBAN_SAENZ/assets/72483241/6af010d4-411a-49df-98ec-1bca4ae6fa81)
 * Vista del dataset final (gold):
-![image](https://github.com/esaenz7/RG_PROYECTO_FINAL_DE_AZURE_ESTEBAN_SAENZ/assets/72483241/d4c2b3c7-2f72-43d9-9296-e676e1c95592)
+![image](https://github.com/esaenz7/RG_PROYECTO_FINAL_DE_AZURE_ESTEBAN_SAENZ/assets/72483241/58e651b0-dddc-4f4c-9b3c-66b0f687f010)
 
 ---
+

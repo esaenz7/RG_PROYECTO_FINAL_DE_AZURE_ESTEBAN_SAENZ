@@ -31,6 +31,7 @@ En este caso se realizará la unión de los conjuntos de datos principales de vu
 e) Filtrar y preparar las columnas y sub-conjuntos para el proceso de aprendizaje automático.
 
 ## Arquitectura de datos
+![image](https://github.com/esaenz7/RG_PROYECTO_FINAL_DE_AZURE_ESTEBAN_SAENZ/assets/72483241/4a2e986b-1de5-4f73-87cd-0f1e4e529593)
 
 ### Azure Storage Account 
 * Contenedor y capas:

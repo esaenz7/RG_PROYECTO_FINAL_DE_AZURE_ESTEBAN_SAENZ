@@ -18,7 +18,7 @@
 				"spark.dynamicAllocation.enabled": "true",
 				"spark.dynamicAllocation.minExecutors": "1",
 				"spark.dynamicAllocation.maxExecutors": "1",
-				"spark.autotune.trackingId": "f1329a38-4841-41d3-b97f-571ee44aad35"
+				"spark.autotune.trackingId": "4ef34f35-146c-4319-92cb-6a2419ab8dc1"
 			}
 		},
 		"metadata": {
@@ -233,7 +233,7 @@
 					"    exc_type, exc_obj, exc_tb = sys.exc_info()\r\n",
 					"    print(exc_type, os.path.split(exc_tb.tb_frame.f_code.co_filename)[1], exc_tb.tb_lineno, exc_obj)"
 				],
-				"execution_count": 1
+				"execution_count": 25
 			},
 			{
 				"cell_type": "code",
@@ -285,7 +285,7 @@
 					"    exc_type, exc_obj, exc_tb = sys.exc_info()\r\n",
 					"    print(exc_type, os.path.split(exc_tb.tb_frame.f_code.co_filename)[1], exc_tb.tb_lineno, exc_obj)"
 				],
-				"execution_count": 2
+				"execution_count": 26
 			},
 			{
 				"cell_type": "code",
@@ -306,7 +306,7 @@
 					"\r\n",
 					"df_1 = spark.read.format('delta').load('abfss://esaenzazdl101@esaenz7azsa101.dfs.core.windows.net/silver')"
 				],
-				"execution_count": 23
+				"execution_count": 27
 			},
 			{
 				"cell_type": "code",
@@ -364,7 +364,7 @@
 					"        .drop('daywk','carrier_cnt','carrier_rnk','sdephr','sdeptim','deptim','wofftim','wontim','txin','arrdel','arrtim','sarrtim','sarrhr','aelap','airtim','StartTime(UTC)','EndTime(UTC)')\r\n",
 					""
 				],
-				"execution_count": 17
+				"execution_count": null
 			},
 			{
 				"cell_type": "code",
@@ -382,7 +382,7 @@
 				"source": [
 					"df_2.write.mode(\"overwrite\").format(\"delta\").save(\"abfss://esaenzazdl101@esaenz7azsa101.dfs.core.windows.net/gold\")"
 				],
-				"execution_count": 18
+				"execution_count": null
 			}
 		]
 	}

@@ -18,7 +18,7 @@
 				"spark.dynamicAllocation.enabled": "true",
 				"spark.dynamicAllocation.minExecutors": "1",
 				"spark.dynamicAllocation.maxExecutors": "1",
-				"spark.autotune.trackingId": "5f39c5e4-b6ab-4e85-9513-1fe24189d973"
+				"spark.autotune.trackingId": "f1329a38-4841-41d3-b97f-571ee44aad35"
 			}
 		},
 		"metadata": {
@@ -233,7 +233,7 @@
 					"    exc_type, exc_obj, exc_tb = sys.exc_info()\r\n",
 					"    print(exc_type, os.path.split(exc_tb.tb_frame.f_code.co_filename)[1], exc_tb.tb_lineno, exc_obj)"
 				],
-				"execution_count": 84
+				"execution_count": 1
 			},
 			{
 				"cell_type": "code",
@@ -285,7 +285,7 @@
 					"    exc_type, exc_obj, exc_tb = sys.exc_info()\r\n",
 					"    print(exc_type, os.path.split(exc_tb.tb_frame.f_code.co_filename)[1], exc_tb.tb_lineno, exc_obj)"
 				],
-				"execution_count": 85
+				"execution_count": 2
 			},
 			{
 				"cell_type": "code",
@@ -301,10 +301,12 @@
 					}
 				},
 				"source": [
-					"df_1  = crear_df(paths=['abfss://esaenzazdl101@esaenz7azsa101.dfs.core.windows.net/silver/data1.csv'],\r\n",
-					"          formats=['csv'], headers=[True], samples_fr=[1.], rand_st=999, print_=True)"
+					"#df_1  = crear_df(paths=['abfss://esaenzazdl101@esaenz7azsa101.dfs.core.windows.net/silver/data1.csv'],\r\n",
+					"#          formats=['csv'], headers=[True], samples_fr=[1.], rand_st=999, print_=True)\r\n",
+					"\r\n",
+					"df_1 = spark.read.format('delta').load('abfss://esaenzazdl101@esaenz7azsa101.dfs.core.windows.net/silver')"
 				],
-				"execution_count": 86
+				"execution_count": 23
 			},
 			{
 				"cell_type": "code",
@@ -328,7 +330,7 @@
 					"                F.to_date('StartTime(UTC)').alias('date1'),\r\n",
 					"                F.col('Type').alias('wtyp'),\r\n",
 					"                F.col('Severity').alias('wsev'),\r\n",
-					"                F.col('AirportCode').alias('icao'),\r\n",
+					"                F.col('AirportCode').alias('icao2'),\r\n",
 					"                F.col('StartTime(UTC)'),\r\n",
 					"                F.col('EndTime(UTC)'),\r\n",
 					"                F.to_date('FL_DATE').alias('date2'),\r\n",
@@ -362,7 +364,7 @@
 					"        .drop('daywk','carrier_cnt','carrier_rnk','sdephr','sdeptim','deptim','wofftim','wontim','txin','arrdel','arrtim','sarrtim','sarrhr','aelap','airtim','StartTime(UTC)','EndTime(UTC)')\r\n",
 					""
 				],
-				"execution_count": 87
+				"execution_count": 17
 			},
 			{
 				"cell_type": "code",
@@ -378,27 +380,9 @@
 					}
 				},
 				"source": [
-					"df_3 = df_2.toPandas()"
+					"df_2.write.mode(\"overwrite\").format(\"delta\").save(\"abfss://esaenzazdl101@esaenz7azsa101.dfs.core.windows.net/gold\")"
 				],
-				"execution_count": 88
-			},
-			{
-				"cell_type": "code",
-				"metadata": {
-					"jupyter": {
-						"source_hidden": false,
-						"outputs_hidden": false
-					},
-					"nteract": {
-						"transient": {
-							"deleting": false
-						}
-					}
-				},
-				"source": [
-					"df_3.to_csv('abfss://esaenzazdl101@esaenz7azsa101.dfs.core.windows.net/gold/data1.csv')"
-				],
-				"execution_count": 89
+				"execution_count": 18
 			}
 		]
 	}

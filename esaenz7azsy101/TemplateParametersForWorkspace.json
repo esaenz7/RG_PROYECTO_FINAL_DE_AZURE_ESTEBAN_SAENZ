@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"workspaceName": {
+			"value": "esaenz7azsy101"
+		},
+		"esaenz7azds101_accountKey": {
+			"value": ""
+		},
+		"esaenz7azsqldb101_connectionString": {
+			"value": ""
+		},
+		"esaenz7azsy101-WorkspaceDefaultSqlServer_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:esaenz7azsy101.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
+		},
+		"esaenz7azds101_properties_typeProperties_url": {
+			"value": "https://esaenz7azsa101.dfs.core.windows.net/"
+		},
+		"esaenz7azsy101-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"value": "https://esaenz7azsa101.dfs.core.windows.net"
+		}
+	}
+}

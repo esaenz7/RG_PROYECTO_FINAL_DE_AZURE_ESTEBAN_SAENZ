@@ -1,0 +1,612 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"workspaceName": {
+			"type": "string",
+			"metadata": "Workspace name",
+			"defaultValue": "esaenz7azsy101"
+		},
+		"esaenz7azds101_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'esaenz7azds101'"
+		},
+		"esaenz7azsqldb101_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'esaenz7azsqldb101'"
+		},
+		"esaenz7azsy101-WorkspaceDefaultSqlServer_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'esaenz7azsy101-WorkspaceDefaultSqlServer'",
+			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:esaenz7azsy101.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
+		},
+		"esaenz7azds101_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://esaenz7azsa101.dfs.core.windows.net/"
+		},
+		"esaenz7azsy101-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://esaenz7azsa101.dfs.core.windows.net"
+		}
+	},
+	"variables": {
+		"workspaceId": "[concat('Microsoft.Synapse/workspaces/', parameters('workspaceName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('workspaceName'), '/esaenz7azds101')]",
+			"type": "Microsoft.Synapse/workspaces/linkedServices",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('esaenz7azds101_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('esaenz7azds101_accountKey')]"
+					}
+				},
+				"connectVia": {
+					"referenceName": "AutoResolveIntegrationRuntime",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/integrationRuntimes/AutoResolveIntegrationRuntime')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/esaenz7azsqldb101')]",
+			"type": "Microsoft.Synapse/workspaces/linkedServices",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('esaenz7azsqldb101_connectionString')]"
+				},
+				"connectVia": {
+					"referenceName": "AutoResolveIntegrationRuntime",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/integrationRuntimes/AutoResolveIntegrationRuntime')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/esaenz7azsy101-WorkspaceDefaultSqlServer')]",
+			"type": "Microsoft.Synapse/workspaces/linkedServices",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"parameters": {
+					"DBName": {
+						"type": "String"
+					}
+				},
+				"annotations": [],
+				"type": "AzureSqlDW",
+				"typeProperties": {
+					"connectionString": "[parameters('esaenz7azsy101-WorkspaceDefaultSqlServer_connectionString')]"
+				},
+				"connectVia": {
+					"referenceName": "AutoResolveIntegrationRuntime",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/integrationRuntimes/AutoResolveIntegrationRuntime')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/esaenz7azsy101-WorkspaceDefaultStorage')]",
+			"type": "Microsoft.Synapse/workspaces/linkedServices",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('esaenz7azsy101-WorkspaceDefaultStorage_properties_typeProperties_url')]"
+				},
+				"connectVia": {
+					"referenceName": "AutoResolveIntegrationRuntime",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/integrationRuntimes/AutoResolveIntegrationRuntime')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/AutoResolveIntegrationRuntime')]",
+			"type": "Microsoft.Synapse/workspaces/integrationRuntimes",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"type": "Managed",
+				"typeProperties": {
+					"computeProperties": {
+						"location": "AutoResolve",
+						"dataFlowProperties": {
+							"computeType": "General",
+							"coreCount": 8,
+							"timeToLive": 0
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/WorkspaceSystemIdentity')]",
+			"type": "Microsoft.Synapse/workspaces/credentials",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"type": "ManagedIdentity",
+				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/esaenz7azipynb101')]",
+			"type": "Microsoft.Synapse/workspaces/notebooks",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"nbformat": 4,
+				"nbformat_minor": 2,
+				"bigDataPool": {
+					"referenceName": "esaenz7azsp101",
+					"type": "BigDataPoolReference"
+				},
+				"sessionProperties": {
+					"driverMemory": "28g",
+					"driverCores": 4,
+					"executorMemory": "28g",
+					"executorCores": 4,
+					"numExecutors": 1,
+					"runAsWorkspaceSystemIdentity": false,
+					"conf": {
+						"spark.dynamicAllocation.enabled": "true",
+						"spark.dynamicAllocation.minExecutors": "1",
+						"spark.dynamicAllocation.maxExecutors": "1",
+						"spark.autotune.trackingId": "1147cfac-f54d-49fd-b9df-4e2d145aa701"
+					}
+				},
+				"metadata": {
+					"saveOutput": true,
+					"enableDebugMode": false,
+					"kernelspec": {
+						"name": "synapse_pyspark",
+						"display_name": "Synapse PySpark"
+					},
+					"language_info": {
+						"name": "python"
+					},
+					"a365ComputeOptions": {
+						"id": "/subscriptions/4a054454-d9c2-464c-8a54-3e310a9f36c8/resourceGroups/RG_PROYECTO_FINAL_DE_AZURE_ESTEBAN_SAENZ/providers/Microsoft.Synapse/workspaces/esaenz7azsy101/bigDataPools/esaenz7azsp101",
+						"name": "esaenz7azsp101",
+						"type": "Spark",
+						"endpoint": "https://esaenz7azsy101.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/esaenz7azsp101",
+						"auth": {
+							"type": "AAD",
+							"authResource": "https://dev.azuresynapse.net"
+						},
+						"sparkVersion": "3.3",
+						"nodeCount": 3,
+						"cores": 4,
+						"memory": 28,
+						"automaticScaleJobs": true
+					},
+					"sessionKeepAliveTimeout": 30
+				},
+				"cells": [
+					{
+						"cell_type": "code",
+						"metadata": {},
+						"source": [
+							"#librerías\r\n",
+							"from IPython.display import Javascript\r\n",
+							"import sys, os, glob, datetime as dt, numpy as np, random, collections as coll\r\n",
+							"import pandas as pd, seaborn as sns, matplotlib.pyplot as plt\r\n",
+							"from sklearn.metrics import roc_curve, auc, classification_report, confusion_matrix\r\n",
+							"from pyspark.sql import SparkSession, functions as F, window as W, DataFrame as DF\r\n",
+							"from pyspark.sql.types import (DateType, IntegerType, FloatType, DoubleType, LongType, StringType, StructField, StructType, TimestampType)\r\n",
+							"from pyspark.ml import functions as mlF, Pipeline as pipe\r\n",
+							"from pyspark.ml.stat import Correlation\r\n",
+							"from pyspark.ml.linalg import Vectors\r\n",
+							"from pyspark.ml.feature import Imputer, StandardScaler, MinMaxScaler, Normalizer, PCA, StringIndexer, OneHotEncoder, VectorAssembler\r\n",
+							"from pyspark.ml.regression import LinearRegression\r\n",
+							"from pyspark.ml.classification import LogisticRegression, DecisionTreeClassifier, DecisionTreeClassificationModel, RandomForestClassifier, GBTClassifier\r\n",
+							"from pyspark.ml.evaluation import BinaryClassificationEvaluator\r\n",
+							"from pyspark.mllib.evaluation import BinaryClassificationMetrics, MulticlassMetrics\r\n",
+							"from pyspark.ml.tuning import CrossValidator, CrossValidatorModel, ParamGridBuilder\r\n",
+							"from functools import reduce\r\n",
+							"from difflib import SequenceMatcher as seqmatch\r\n",
+							"# import findspark\r\n",
+							"# findspark.init('/usr/lib/python3.7/site-packages/pyspark')\r\n",
+							"# !pip install -q handyspark\r\n",
+							"# from handyspark import *\r\n",
+							"\r\n",
+							"#variables postgres\r\n",
+							"# args = sys.argv\r\n",
+							"# print(args)\r\n",
+							"#estos parámetros corresponden a la instancia de postgres dentro del ambiente de docker que se adjunta al trabajo\r\n",
+							"host = '10.7.84.102'\r\n",
+							"port = '5432'\r\n",
+							"user = 'postgres'\r\n",
+							"password = 'testPassword'\r\n",
+							"\r\n",
+							"#sesión de spark\r\n",
+							"spark = SparkSession.builder\\\r\n",
+							"  .master(\"local\")\\\r\n",
+							"  .appName(\"Main\")\\\r\n",
+							"  .config('spark.ui.port', '4050')\\\r\n",
+							"  .config(\"spark.driver.extraClassPath\", \"postgresql-42.2.14.jar\") \\\r\n",
+							"  .config(\"spark.executor.extraClassPath\", \"postgresql-42.2.14.jar\") \\\r\n",
+							"  .config(\"spark.jars\", \"postgresql-42.2.14.jar\") \\\r\n",
+							"  .getOrCreate()\r\n",
+							"spark.sparkContext.setLogLevel(\"ERROR\")\r\n",
+							"\r\n",
+							"#funciones\r\n",
+							"#función para almacenar en base de datos\r\n",
+							"def escribir_df(df, host=host, port=port, user=user, password=password, table='table'):\r\n",
+							"  try:\r\n",
+							"    #almacenamiento en base de datos\r\n",
+							"      # .option(\"driver\", \"postgresql-42.2.14.jar\") \\\r\n",
+							"    df \\\r\n",
+							"      .write \\\r\n",
+							"      .format(\"jdbc\") \\\r\n",
+							"      .mode('overwrite') \\\r\n",
+							"      .option(\"url\", \"jdbc:postgresql://\"+host+\":\"+port+\"/postgres\") \\\r\n",
+							"      .option(\"user\", user) \\\r\n",
+							"      .option(\"password\", password) \\\r\n",
+							"      .option(\"dbtable\", table) \\\r\n",
+							"      .save()\r\n",
+							"    return True\r\n",
+							"  except Exception as e:\r\n",
+							"    exc_type, exc_obj, exc_tb = sys.exc_info()\r\n",
+							"    print(exc_type, os.path.split(exc_tb.tb_frame.f_code.co_filename)[1], exc_tb.tb_lineno, exc_obj)\r\n",
+							"'''\r\n",
+							"La ejecución de spark es una ejecución vaga (\"lazy\"), si se intenta almacenar un dataframe en una tabla la cual es a su vez su propia fuente de datos, \r\n",
+							"dicha tabla será sobreescrita con valores nulos quedando vacía, por lo tanto en dichos casos se recomienda utilizar una tabla temporal.\r\n",
+							"'''\r\n",
+							"#función para cargar de base de datos\r\n",
+							"def leer_df(host=host, port=port, user=user, password=password, table='table'):\r\n",
+							"  try:\r\n",
+							"    #lectura desde base de datos hacia dataframe temporal\r\n",
+							"      # .option(\"driver\", \"postgresql-42.2.14.jar\") \\\r\n",
+							"    df = spark \\\r\n",
+							"      .read \\\r\n",
+							"      .format(\"jdbc\") \\\r\n",
+							"      .option(\"url\", \"jdbc:postgresql://\"+host+\":\"+port+\"/postgres\") \\\r\n",
+							"      .option(\"user\", user) \\\r\n",
+							"      .option(\"password\", password) \\\r\n",
+							"      .option(\"dbtable\", table) \\\r\n",
+							"      .load()\r\n",
+							"    df.count()\r\n",
+							"    return df\r\n",
+							"  except Exception as e:\r\n",
+							"    exc_type, exc_obj, exc_tb = sys.exc_info()\r\n",
+							"    print(exc_type, os.path.split(exc_tb.tb_frame.f_code.co_filename)[1], exc_tb.tb_lineno, exc_obj)\r\n",
+							"\r\n",
+							"#función columnas-vector\r\n",
+							"def cols2vec(dfin, inputcols=[], outputcol='features', label='label', lab_alias='label', print_=False):\r\n",
+							"  try:\r\n",
+							"    assy = VectorAssembler(inputCols=inputcols, outputCol=outputcol, handleInvalid='skip')\r\n",
+							"    dfout = assy.transform(dfin)\r\n",
+							"    if lab_alias:\r\n",
+							"      dfout = dfout.select([outputcol, F.col(label).alias(lab_alias)])\r\n",
+							"    else:\r\n",
+							"      dfout = dfout.select([outputcol])\r\n",
+							"    if print_: dfout.show(10, truncate=False)\r\n",
+							"    return dfout\r\n",
+							"  except Exception as e:\r\n",
+							"    exc_type, exc_obj, exc_tb = sys.exc_info()\r\n",
+							"    print(exc_type, os.path.split(exc_tb.tb_frame.f_code.co_filename)[1], exc_tb.tb_lineno, exc_obj)\r\n",
+							"\r\n",
+							"#función vector-columnas\r\n",
+							"def vec2cols(dfin, inputcol='features', outputcols=[], label='label', lab_alias='label', print_=False, prediction=None):\r\n",
+							"  try:\r\n",
+							"    if lab_alias:\r\n",
+							"      if prediction:\r\n",
+							"        dfout = dfin.select(inputcol, label, prediction).withColumn('temp', mlF.vector_to_array(inputcol)) \\\r\n",
+							"        .select([F.col('temp')[i].alias(outputcols[i]) for i in range(len(outputcols))] + [F.col(label).alias(lab_alias)] + [F.col(prediction)])\r\n",
+							"      else:\r\n",
+							"        dfout = dfin.select(inputcol, label).withColumn('temp', mlF.vector_to_array(inputcol)) \\\r\n",
+							"        .select([F.col('temp')[i].alias(outputcols[i]) for i in range(len(outputcols))] + [F.col(label).alias(lab_alias)])\r\n",
+							"    else:\r\n",
+							"      dfout = dfin.select(inputcol, label).withColumn('temp', mlF.vector_to_array(inputcol)) \\\r\n",
+							"      .select([F.col('temp')[i].alias(outputcols[i]) for i in range(len(outputcols))])\r\n",
+							"    if print_: dfout.show(10, truncate=False)\r\n",
+							"    return dfout\r\n",
+							"  except Exception as e:\r\n",
+							"    exc_type, exc_obj, exc_tb = sys.exc_info()\r\n",
+							"    print(exc_type, os.path.split(exc_tb.tb_frame.f_code.co_filename)[1], exc_tb.tb_lineno, exc_obj)\r\n",
+							"\r\n",
+							"#función de graficación de correlaciones\r\n",
+							"def plot_corr(df=None, inputcols=[]):\r\n",
+							"  try:\r\n",
+							"    sns.set(font_scale=1.5)\r\n",
+							"    dfvec = cols2vec(df, inputcols=inputcols, outputcol='features')\r\n",
+							"    dfscaled = StandardScaler(inputCol='features', outputCol='scaled', withStd=True, withMean=True).fit(dfvec).transform(dfvec).select(['scaled', 'label'])\r\n",
+							"    pearson_matrix = Correlation.corr(dfscaled, column='scaled', method='pearson').collect()[0][0]\r\n",
+							"    dfcols = vec2cols(dfscaled, inputcol='scaled', outputcols=inputcols)\r\n",
+							"    print('\\nMapa de calor')\r\n",
+							"    grid_kws = {\"height_ratios\":(1,.05), \"hspace\":.2}\r\n",
+							"    f,(ax,cbar_ax) = plt.subplots(2, gridspec_kw=grid_kws, figsize=(24,8))\r\n",
+							"    sns.heatmap(pearson_matrix.toArray(), yticklabels=inputcols, xticklabels=inputcols, mask=np.triu(pearson_matrix.toArray()),\r\n",
+							"                annot=True, fmt=\".2f\", linewidths=.5, cmap=sns.diverging_palette(220,20,as_cmap=True), ax=ax, cbar_ax=cbar_ax, cbar_kws={\"orientation\": \"horizontal\"})\r\n",
+							"    plt.show()\r\n",
+							"    print('\\nGráfico de parcela')\r\n",
+							"    sns.pairplot(dfcols.toPandas(), height=2, aspect=16/9, corner=True, hue='label')\r\n",
+							"    plt.show()\r\n",
+							"    return dfscaled\r\n",
+							"  except Exception as e:\r\n",
+							"    exc_type, exc_obj, exc_tb = sys.exc_info()\r\n",
+							"    print(exc_type, os.path.split(exc_tb.tb_frame.f_code.co_filename)[1], exc_tb.tb_lineno, exc_obj)\r\n",
+							"\r\n",
+							"#función de graficación ROC\r\n",
+							"def plot_metrics(dfcoll=None, ver=1, metric=None):\r\n",
+							"  try:\r\n",
+							"    sns.set(font_scale=1)\r\n",
+							"    fpr, tpr, thresholds = roc_curve(np.asarray(list(i[1] for i in dfcoll)), np.asarray(list(i[4][1] for i in dfcoll)))\r\n",
+							"    roc_auc = auc(fpr, tpr)\r\n",
+							"    conf_mat = confusion_matrix(list(i[1] for i in dfcoll), list(i[5] for i in dfcoll))\r\n",
+							"    if ver==1:\r\n",
+							"      fig,ax = plt.subplots(1,2, figsize=(12,4))\r\n",
+							"      ax[0].plot(fpr, tpr, label='ROC curve (area = %0.2f)' % roc_auc)\r\n",
+							"      ax[0].plot([0, 1], [0, 1], 'k--')\r\n",
+							"      ax[0].set_xlim([-0.05, 1.0]), ax[0].set_ylim([0.0, 1.05])\r\n",
+							"      ax[0].set_xlabel('Falsos positivos'), ax[0].set_ylabel('Verdaderos positivos')\r\n",
+							"      ax[0].set_title('Curva ROC'), ax[0].legend(loc=\"lower right\")\r\n",
+							"      sns.heatmap(conf_mat, annot=True, fmt='.0f', ax=ax[1])\r\n",
+							"      ax[1].set_title('Matriz de confusión')\r\n",
+							"      plt.show()\r\n",
+							"    else:\r\n",
+							"      fig, axs = plt.subplots(1, 2, figsize=(12,4))\r\n",
+							"      metric.plot_roc_curve(ax=axs[0])\r\n",
+							"      metric.plot_pr_curve(ax=axs[1])\r\n",
+							"      plt.show()\r\n",
+							"    return (roc_auc, fpr, tpr, thresholds, conf_mat)\r\n",
+							"  except Exception as e:\r\n",
+							"    exc_type, exc_obj, exc_tb = sys.exc_info()\r\n",
+							"    print(exc_type, os.path.split(exc_tb.tb_frame.f_code.co_filename)[1], exc_tb.tb_lineno, exc_obj)\r\n",
+							"\r\n",
+							"def plot_bound(trues, falses, n):\r\n",
+							"  try:\r\n",
+							"    fig,ax = plt.subplots(figsize=(12,4))\r\n",
+							"    ax.scatter(list(range(n)), trues[:n], s=10, alpha=0.7, c='r', marker=\"o\", label='1')\r\n",
+							"    ax.scatter(list(range(n)), falses[:n], s=10, alpha=0.7, c='b', marker=\"s\", label='0')\r\n",
+							"    plt.axhline(.5, color='green')\r\n",
+							"    plt.legend(loc='upper right'), ax.set_title('Límite de decisión')\r\n",
+							"    ax.set_xlabel('Observaciones'), ax.set_ylabel('Predicción de probabilidad')\r\n",
+							"    plt.show()\r\n",
+							"  except Exception as e:\r\n",
+							"    exc_type, exc_obj, exc_tb = sys.exc_info()\r\n",
+							"    print(exc_type, os.path.split(exc_tb.tb_frame.f_code.co_filename)[1], exc_tb.tb_lineno, exc_obj)"
+						],
+						"outputs": [],
+						"execution_count": 1
+					},
+					{
+						"cell_type": "code",
+						"metadata": {
+							"jupyter": {
+								"source_hidden": false,
+								"outputs_hidden": false
+							},
+							"nteract": {
+								"transient": {
+									"deleting": false
+								}
+							}
+						},
+						"source": [
+							"def crear_df(paths=[], formats=[], headers=[], samples_fr=[1.], rand_st=None, print_=True):\r\n",
+							"  try:\r\n",
+							"    sf1, sf2, ef = '\\n\\033[1m\\033[103m\\033[30m', '\\n\\033[1m\\033[106m\\033[30m', '\\033[0m'\r\n",
+							"    if (len(paths)==len(formats)) & (len(paths)==len(headers)) & (len(paths)==len(samples_fr)):\r\n",
+							"      df_list = []\r\n",
+							"      for i, (path, format, header, sample_fr) in enumerate(zip(paths, formats, headers, samples_fr)):\r\n",
+							"        # i = i+1 # globals()['dfi'+str(i)]\r\n",
+							"        #lectura de archivos y carga del dataframe\r\n",
+							"        dfi = spark \\\r\n",
+							"          .read \\\r\n",
+							"          .format(format) \\\r\n",
+							"          .option('path', path) \\\r\n",
+							"          .option('header', header) \\\r\n",
+							"          .option('inferSchema', True) \\\r\n",
+							"          .load()\r\n",
+							"        #obtención de muestra aleatoria sin reemplazo (por defecto 100%)\r\n",
+							"        dfs = dfi.sample(sample_fr, rand_st)\r\n",
+							"\r\n",
+							"        #despliegue de resultados\r\n",
+							"        if print_:\r\n",
+							"          #detalles del dataframe\r\n",
+							"          print(sf1,'Dataframe', i+1, ef, '(', path, ')')\r\n",
+							"          # print('Archivo: [', dfi.count(), 'filas,', len(dfi.columns), 'columnas ]')\r\n",
+							"          # print('Muestra: [', dfs.count(), 'filas,', len(dfs.columns), 'columnas ]')\r\n",
+							"          dfs.show(10, truncate=False)\r\n",
+							"          dfs.printSchema()\r\n",
+							"          print(sf2, 'Momentos estadísticos', ef)\r\n",
+							"          dfs.describe().show()\r\n",
+							"        df_list.append(dfs)\r\n",
+							"      return df_list\r\n",
+							"    else:\r\n",
+							"      print('Los parámetros tipo listas deben tener la misma cantidad de items.')\r\n",
+							"  except Exception as e:\r\n",
+							"    exc_type, exc_obj, exc_tb = sys.exc_info()\r\n",
+							"    print(exc_type, os.path.split(exc_tb.tb_frame.f_code.co_filename)[1], exc_tb.tb_lineno, exc_obj)"
+						],
+						"outputs": [],
+						"execution_count": 2
+					},
+					{
+						"cell_type": "code",
+						"metadata": {
+							"jupyter": {
+								"source_hidden": false,
+								"outputs_hidden": false
+							},
+							"nteract": {
+								"transient": {
+									"deleting": false
+								}
+							}
+						},
+						"source": [
+							"#df_1  = crear_df(paths=['abfss://esaenzazdl101@esaenz7azsa101.dfs.core.windows.net/silver/data1.csv'],\r\n",
+							"#          formats=['csv'], headers=[True], samples_fr=[1.], rand_st=999, print_=True)\r\n",
+							"\r\n",
+							"df_1 = spark.read.format('delta').load('abfss://esaenzazdl101@esaenz7azsa101.dfs.core.windows.net/silver')"
+						],
+						"outputs": [],
+						"execution_count": 23
+					},
+					{
+						"cell_type": "code",
+						"metadata": {
+							"jupyter": {
+								"source_hidden": false,
+								"outputs_hidden": false
+							},
+							"nteract": {
+								"transient": {
+									"deleting": false
+								}
+							}
+						},
+						"source": [
+							"df_2 = df_1[0]\\\r\n",
+							"        .filter((F.col('CANCELLED') == 0) & (F.col('DIVERTED') == 0) & (F.col('Country')=='United States') & F.col('StartTime(UTC)').between('2018-01-01 00:00:00','2019-01-01 00:00:00'))\\\r\n",
+							"        .select(\r\n",
+							"                F.col('Code1').alias('iata'),\r\n",
+							"                F.col('Code2').alias('icao'),\r\n",
+							"                F.to_date('StartTime(UTC)').alias('date1'),\r\n",
+							"                F.col('Type').alias('wtyp'),\r\n",
+							"                F.col('Severity').alias('wsev'),\r\n",
+							"                F.col('AirportCode').alias('icao2'),\r\n",
+							"                F.col('StartTime(UTC)'),\r\n",
+							"                F.col('EndTime(UTC)'),\r\n",
+							"                F.to_date('FL_DATE').alias('date2'),\r\n",
+							"                F.col('ORIGIN').alias('orig'),\r\n",
+							"                F.col('DEST').alias('dest'),\r\n",
+							"                F.col('OP_CARRIER').alias('carrier'),\r\n",
+							"                F.col('CRS_DEP_TIME').cast('int').alias('sdeptim'),\r\n",
+							"                F.col('DEP_TIME').cast('int').alias('deptim'),\r\n",
+							"                F.col('DEP_DELAY').cast('int').alias('depdel'),\r\n",
+							"                F.col('TAXI_OUT').cast('int').alias('txout'),\r\n",
+							"                F.col('WHEELS_OFF').cast('int').alias('wofftim'),\r\n",
+							"                F.col('WHEELS_ON').cast('int').alias('wontim'),\r\n",
+							"                F.col('TAXI_IN').cast('int').alias('txin'),\r\n",
+							"                F.col('ARR_DELAY').cast('int').alias('arrdel'),\r\n",
+							"                F.col('ARR_TIME').cast('int').alias('arrtim'),\r\n",
+							"                F.col('CRS_ARR_TIME').cast('int').alias('sarrtim'),\r\n",
+							"                F.col('CRS_ELAPSED_TIME').cast('int').alias('selap'),\r\n",
+							"                F.col('ACTUAL_ELAPSED_TIME').cast('int').alias('aelap'),\r\n",
+							"                F.col('AIR_TIME').cast('int').alias('airtim'),\r\n",
+							"                F.col('DISTANCE').cast('int').alias('dist'))\\\r\n",
+							"        .withColumn('daywk', F.dayofweek(F.col('date2')).cast('int'))\\\r\n",
+							"        .withColumn('wkday', F.when(F.col('daywk')<5,1).otherwise(0))\\\r\n",
+							"        .withColumn('month', F.month(F.col('date2')).cast('int'))\\\r\n",
+							"        .withColumn('sdephr', F.expr('substring(sdeptim, 1, length(sdeptim)-2)').cast('int'))\\\r\n",
+							"        .withColumn('sarrhr', F.expr('substring(sarrtim, 1, length(sarrtim)-2)').cast('int'))\\\r\n",
+							"        .withColumn('morning', F.when(F.col('sdephr')<12,1).otherwise(0))\\\r\n",
+							"        .withColumn('label', F.when(F.col('arrdel')>0,1).otherwise(0))\\\r\n",
+							"        .withColumn('carrier_cnt', F.count('carrier').over(W.Window.partitionBy('carrier')))\\\r\n",
+							"        .withColumn('carrier_rnk', F.dense_rank().over(W.Window.orderBy(F.desc('carrier_cnt'))))\\\r\n",
+							"        .withColumn('carrier', F.when(F.col('carrier_rnk')>9,'00').otherwise(F.col('carrier')))\\\r\n",
+							"        .drop('daywk','carrier_cnt','carrier_rnk','sdephr','sdeptim','deptim','wofftim','wontim','txin','arrdel','arrtim','sarrtim','sarrhr','aelap','airtim','StartTime(UTC)','EndTime(UTC)')\r\n",
+							""
+						],
+						"outputs": [],
+						"execution_count": 17
+					},
+					{
+						"cell_type": "code",
+						"metadata": {
+							"jupyter": {
+								"source_hidden": false,
+								"outputs_hidden": false
+							},
+							"nteract": {
+								"transient": {
+									"deleting": false
+								}
+							}
+						},
+						"source": [
+							"df_2.write.mode(\"overwrite\").format(\"delta\").save(\"abfss://esaenzazdl101@esaenz7azsa101.dfs.core.windows.net/gold\")"
+						],
+						"outputs": [],
+						"execution_count": 18
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/esaenz7azldb101')]",
+			"type": "Microsoft.Synapse/workspaces/databases",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"Ddls": [
+					{
+						"ActionType": "CREATE",
+						"OldEntity": null,
+						"NewEntity": {
+							"Name": "esaenz7azldb101",
+							"EntityType": "DATABASE",
+							"Origin": {
+								"Type": "SPARK"
+							},
+							"Properties": {
+								"IsSyMSCDMDatabase": true
+							},
+							"Source": {
+								"Provider": "ADLS",
+								"Location": "abfss://esaenzazdl101@esaenz7azsa101.dfs.core.windows.net/esaenz7azldb101",
+								"Properties": {
+									"FormatType": "csv",
+									"LinkedServiceName": "esaenz7azsy101-WorkspaceDefaultStorage"
+								}
+							},
+							"PublishStatus": "PUBLISHED",
+							"ObjectVersion": 1,
+							"ObjectId": "6a3d8aa5-f458-47e9-b7bd-19869bdf995f"
+						},
+						"Source": {
+							"Type": "SPARK"
+						}
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/esaenz7azsp101')]",
+			"type": "Microsoft.Synapse/workspaces/bigDataPools",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"autoPause": {
+					"enabled": true,
+					"delayInMinutes": 15
+				},
+				"autoScale": {
+					"enabled": true,
+					"maxNodeCount": 3,
+					"minNodeCount": 3
+				},
+				"nodeCount": 3,
+				"nodeSize": "Small",
+				"nodeSizeFamily": "MemoryOptimized",
+				"sparkVersion": "3.3",
+				"isComputeIsolationEnabled": false,
+				"sessionLevelPackagesEnabled": true,
+				"annotations": []
+			},
+			"dependsOn": [],
+			"location": "eastus"
+		}
+	]
+}
